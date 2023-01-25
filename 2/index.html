@@ -46,6 +46,7 @@
     <script src="https://online.vsevn.ru/new/js/jq.min.js" type="text/javascript"></script>
     <script src="https://online.vsevn.ru/new/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="https://online.vsevn.ru/new/js/jasny-bootstrap.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="/vsepoint/css/fonts.css">
 
     <script src="https://online.vsevn.ru/new/js/slick.min.js" type="text/javascript"></script>
     <script src="https://online.vsevn.ru/new/js/bootstrap-select.min.js" type="text/javascript"></script>
@@ -67,7 +68,10 @@
             justify-content: center;
             max-width: 1920px;
             margin: 0 auto;
-            padding-top: 150px;
+        }
+
+        .wrapper__svg>svg {
+            margin-top: 100px;
         }
 
         #layer_1 {
@@ -204,7 +208,6 @@
         #r_b,
         #l_b {
             cursor: pointer;
-            top: 53%;
             width: 28px;
             height: 88px;
             position: absolute;
@@ -217,8 +220,7 @@
 
         #r_b:hover,
         #l_b:hover {
-            background: #34a935;
-            border-color: #34a935;
+            background: #fee414;
         }
 
         #r_b::before,
@@ -228,7 +230,7 @@
             content: "";
             position: absolute;
             display: inline-block;
-            width: 10px;
+            width: 13px;
             height: 2px;
             background: #fee414;
             border-radius: 50%;
@@ -238,24 +240,24 @@
         #l_b:hover::before,
         #r_b:hover::after,
         #l_b:hover::after {
-            background: #dadada;
+            background: #fff;
         }
 
         #l_b::before {
-            transform: rotate(-45deg);
+            transform: rotate(-45deg) translate(2px, -3px);
         }
 
         #l_b::after {
-            transform: rotate(45deg) translate(4px, 4px);
+            transform: rotate(45deg) translate(3px, 4px);
         }
 
 
         #r_b::before {
-            transform: rotate(45deg);
+            transform: rotate(45deg) translate(-2px, -3px);
         }
 
         #r_b::after {
-            transform: rotate(-45deg) translate(-4px, 4px);
+            transform: rotate(-45deg) translate(-3px, 4px);
         }
 
         @media (max-width: 1349px) {
@@ -4002,17 +4004,16 @@
     </div>
     <div class="wrapper">
         <div class="wrapper__svg">
-            <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" id="layer_1"
-                version="1.1"
+            <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" id="layer_1" version="1.1"
                 style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
                 viewBox="0 0 45828.67 19089.78" xmlns:xlink="http://www.w3.org/1999/xlink"
                 xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">
                 <defs>
                     <font id="FontID1" horiz-adv-x="616" font-variant="normal" style="fill-rule:nonzero"
                         font-style="normal" font-weight="500">
-                        <font-face font-family="ZaharovAE Pro Medium">
+                        <font-face font-family="ZaharovAE Pro">
                             <font-face-src>
-                                <font-face-name name="ZaharovAE Pro Medium" />
+                                <font-face-name name="ZaharovAE Pro" />
                             </font-face-src>
                         </font-face>
                         <missing-glyph>
@@ -4065,7 +4066,7 @@
                         font-style="normal" font-weight="700">
                         <font-face font-family="ZaharovAE Pro">
                             <font-face-src>
-                                <font-face-name name="ZaharovAE Pro Bold" />
+                                <font-face-name name="ZaharovAE Pro" />
                             </font-face-src>
                         </font-face>
                         <missing-glyph>
@@ -4143,22 +4144,6 @@
                             d="M576.005 0l0 510.001 148.997 0 0 -510.001 -148.997 0zm-360.006 510.001l0 -177 134.002 0c54.0019,0 95.3371,-13.3319 123.996,-40.0048 32.6691,-28.6593 49.0036,-70.3272 49.0036,-124.994 0,-27.3382 -4.83199,-52.3388 -14.496,-75.0021 -9.67322,-22.6632 -23.8366,-41.3352 -42.5086,-55.9975 -31.9946,-24.6681 -68.6641,-37.0021 -109.999,-37.0021l-288.995 0 0 510.001 148.997 0zm0.99781 -417.999l78.0047 0c25.9985,0 45.6683,5.6635 59.0002,16.9997 8.00096,5.9961 13.9971,14.496 17.9975,25.4996 4.00048,10.9944 6.00534,23.1621 6.00534,36.5032 0,24.6589 -8.33356,42.9982 -25.0007,54.9997 -13.3319,9.33137 -32.0038,13.9971 -56.0067,13.9971l-80.0004 0 0 -147.999z" />
                     </font>
                     <style type="text/css">
-                        @font-face {
-                            font-family: "ZaharovAE Pro Medium";
-                            font-variant: normal;
-                            font-style: normal;
-                            font-weight: 500;
-                            src: url("#FontID1") format(svg)
-                        }
-
-                        @font-face {
-                            font-family: "ZaharovAE Pro";
-                            font-variant: normal;
-                            font-style: normal;
-                            font-weight: bold;
-                            src: url("#FontID0") format(svg)
-                        }
-
                         .fil1 {
                             fill: #FEFEFE
                         }
@@ -22186,10 +22171,10 @@
                             font-family: 'ZaharovAE Pro'
                         }
 
-                        .fnt1 {
+                        .fnt4 {
                             font-weight: 500;
                             font-size: 1213.72px;
-                            font-family: 'ZaharovAE Pro Medium'
+                            font-family: 'ZaharovAE Pro';
                         }
 
                         .fnt0 {
@@ -22211,32 +22196,32 @@
                         <g>
                             <polygon class="fil2"
                                 points="3375.66,12698.57 10139.13,12698.57 10139.13,2356.29 3375.66,2356.29 " />
-                            <text x="3919.96" y="3805.87" class="fil1 fnt1">Расп</text>
-                            <text x="6662.97" y="3805.87" class="fil1 fnt1">рост-</text>
-                            <text x="3106.72" y="6502.89" class="fil1 fnt1"> </text>
-                            <text x="3361.59" y="6502.89" class="fil1 fnt1"> </text>
-                            <text x="3580.05" y="6502.89" class="fil1 fnt1">п</text>
-                            <text x="6153.14" y="6502.89" class="fil1 fnt1">одн</text>
-                            <text x="8222.52" y="6502.89" class="fil1 fnt1">ы</text>
-                            <text x="9109.75" y="6502.89" class="fil1 fnt1">х</text>
-                            <text x="4239.11" y="6502.89" class="fil1 fnt1">рох</text>
-                            <text x="3646.87" y="5150.54" class="fil1 fnt1">ран</text>
-                            <text x="6354.69" y="5150.54" class="fil1 fnt1">ет</text>
-                            <text x="7485.87" y="5150.54" class="fil1 fnt1">ся в</text>
-                            <text x="5717.47" y="5150.54" class="fil1 fnt1">я</text>
-                            <text x="3563.12" y="10536.87" class="fil1 fnt1">в</text>
-                            <text x="4223.39" y="10536.87" class="fil1 fnt1"> </text>
-                            <text x="5132.45" y="10536.87" class="fil1 fnt1">аг</text>
-                            <text x="6319.47" y="10536.87" class="fil1 fnt1">орной</text>
-                            <text x="4478.26" y="10536.87" class="fil1 fnt1">н</text>
-                            <text x="5847.48" y="7847.55" class="fil1 fnt1">м</text>
-                            <text x="6660.67" y="7847.55" class="fil1 fnt1">ест</text>
-                            <text x="8430.28" y="7847.55" class="fil1 fnt1">ах</text>
-                            <text x="5471.2" y="9192.21" class="fil1 fnt1"> </text>
-                            <text x="5726.08" y="9192.21" class="fil1 fnt1">города</text>
-                            <text x="6655.86" y="11881.59" class="fil1 fnt1">ч</text>
-                            <text x="7240.87" y="11881.59" class="fil1 fnt1">аст</text>
-                            <text x="9077.24" y="11881.59" class="fil1 fnt1">и.</text>
+                            <text x="3919.96" y="3805.87" class="fil1 fnt4">Расп</text>
+                            <text x="6662.97" y="3805.87" class="fil1 fnt4">рост-</text>
+                            <text x="3106.72" y="6502.89" class="fil1 fnt4"> </text>
+                            <text x="3361.59" y="6502.89" class="fil1 fnt4"> </text>
+                            <text x="3580.05" y="6502.89" class="fil1 fnt4">п</text>
+                            <text x="6153.14" y="6502.89" class="fil1 fnt4">одн</text>
+                            <text x="8222.52" y="6502.89" class="fil1 fnt4">ы</text>
+                            <text x="9109.75" y="6502.89" class="fil1 fnt4">х</text>
+                            <text x="4239.11" y="6502.89" class="fil1 fnt4">рох</text>
+                            <text x="3646.87" y="5150.54" class="fil1 fnt4">ран</text>
+                            <text x="6354.69" y="5150.54" class="fil1 fnt4">ет</text>
+                            <text x="7485.87" y="5150.54" class="fil1 fnt4">ся в</text>
+                            <text x="5717.47" y="5150.54" class="fil1 fnt4">я</text>
+                            <text x="3563.12" y="10536.87" class="fil1 fnt4">в</text>
+                            <text x="4223.39" y="10536.87" class="fil1 fnt4"> </text>
+                            <text x="5132.45" y="10536.87" class="fil1 fnt4">аг</text>
+                            <text x="6319.47" y="10536.87" class="fil1 fnt4">орной</text>
+                            <text x="4478.26" y="10536.87" class="fil1 fnt4">н</text>
+                            <text x="5847.48" y="7847.55" class="fil1 fnt4">м</text>
+                            <text x="6660.67" y="7847.55" class="fil1 fnt4">ест</text>
+                            <text x="8430.28" y="7847.55" class="fil1 fnt4">ах</text>
+                            <text x="5471.2" y="9192.21" class="fil1 fnt4"> </text>
+                            <text x="5726.08" y="9192.21" class="fil1 fnt4">города</text>
+                            <text x="6655.86" y="11881.59" class="fil1 fnt4">ч</text>
+                            <text x="7240.87" y="11881.59" class="fil1 fnt4">аст</text>
+                            <text x="9077.24" y="11881.59" class="fil1 fnt4">и.</text>
                             <polygon class="fil3"
                                 points="3951.8,12817.19 5621.36,12817.19 5621.36,12570.01 3951.8,12570.01 " />
                         </g>
@@ -32423,12 +32408,6 @@
             <div id="l_b"></div>
         </div>
     </div>
-    <footer id="footer" class="text-center">
-        <br>
-        Материалы предоставлены OOO «Все Вакансии Нижнего». Все права защищены<br>
-        Перепечатка материалов возможна только с согласия ООО «Все Вакансии Нижнего»
-        <p>© 2023 online.vsevn.ru, Inc.</p>
-    </footer>
     <div id="logo-popup" class="fade modal" role="dialog" tabindex="-1">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
