@@ -1,9 +1,10 @@
 const resolutions = [
     "1920x1080",
     "1536x864",
-    "1280x720"
+    "1280x720",
+    "800x600"
 ];
-let currentLayout = null;
+let currentResolution = null;
 
 async function adaptOnResize() {
     const wrapperSvg = document.querySelector(".wrapper__svg");
@@ -13,11 +14,11 @@ async function adaptOnResize() {
     const windowHeight = document.documentElement.clientHeight || window.innerHeight;
 
     const closestResolution = findClosestResolution(windowWidth, windowHeight);
-    if (!closestResolution || closestResolution === currentLayout) return;
+    if (!closestResolution || closestResolution === currentResolution) return;
 
     const request = await fetch(`sizes/${closestResolution}.svg`);
     const layout = await request.text();
-    currentLayout = closestResolution;
+    currentResolution = closestResolution;
 
     if (svg) svg.remove();
     wrapperSvg.insertAdjacentHTML("afterbegin", layout);
@@ -31,8 +32,9 @@ async function adaptOnResize() {
         }
     }
 }
-function findClosestResolution(wWidth) {
+function findClosestResolution(wWidth, wHeight) {
     const widths = resolutions.map(res => res.split("x")[0]);
+    const heights = resolutions.map(res => res.split("x")[1]);
 
     let closestWidth = widths.sort((w1, w2) => {
         w1 = parseInt(w1);
@@ -44,12 +46,25 @@ function findClosestResolution(wWidth) {
         if (res1 > res2) return 1;
         return 0;
     })[0];
-    if (!closestWidth) return;
+    let closestHeight = heights.sort((h1, h2) => {
+        h1 = parseInt(h1);
+        h2 = parseInt(h2);
+
+        const res1 = Math.abs(wHeight - h1);
+        const res2 = Math.abs(wHeight - h2);
+        if (res1 < res2) return -1;
+        if (res1 > res2) return 1;
+        return 0;
+    })[0];
 
     closestWidth = closestWidth.toString();
-    const closestResolution = resolutions.find(res => res.startsWith(closestWidth));
+    closestHeight = closestHeight.toString();
+    let closestByFullmatch = resolutions
+        .filter(res => res.startsWith(closestWidth))
+        .find(res => res.split("x")[1].includes(closestHeight));
+    let closestByWidthMatch = resolutions.find(res => res.startsWith(closestWidth));
 
-    return closestResolution;
+    return closestByFullmatch ? closestByFullmatch : closestByWidthMatch;
 }
 
 adaptOnResize();
