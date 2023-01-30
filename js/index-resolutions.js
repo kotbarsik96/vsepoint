@@ -14,64 +14,66 @@ document.addEventListener("adapted", adaptBackground);
 window.addEventListener("resize", adaptBackground);
 
 const background = document.querySelector(".background"),
-    backgroundLeftTopCorner = document.querySelector(".background__left-top-corner"),
-    backgroundTopStripes = document.querySelector(".background__top-stripes"),
-    backgroundLeftStripes = document.querySelector(".background__left-stripes"),
-    backgroundLeftBottomCorner = document.querySelector(".background__left-bottom-corner"),
-    backgroundBottomStripes = document.querySelector(".background__bottom-stripes"),
-    topVerticalStripes = document.querySelectorAll(".vertical-stripe--top"),
-    leftHorizontalStripes = document.querySelectorAll(".horizontal-stripe");
+    backgroundLeftTopCorner = document.querySelector(".background__left-top-corner");
 
 function adaptBackground() {
-    const svg = document.querySelector(".wrapper__svg > svg"),
-        width = svg.clientWidth,
-        height = svg.clientHeight;
+    const backgroundEndpoint = getCoords(document.querySelector("#vertical-stripe")).right;
 
-    const verticalStripe = document.querySelector("#vertical-stripe"),
-        topHorizontalStripe = document.querySelector("#top-rectangle"),
-        horizontalStripe = document.querySelector("#horizontal-stripe"),
-        verticalStripeBottom = document.querySelector("#vertical-stripe-bottom");
-
-    const coords = {
-        verticalStripe: getCoords(verticalStripe),
-        topHorizontalStripe: getCoords(topHorizontalStripe),
-        horizontalStripe: getCoords(horizontalStripe),
-        verticalStripeBottom: getCoords(verticalStripeBottom),
-    }
-
-    background.style.width = `${getCoords(verticalStripe).right}px`;
+    background.style.width = `${backgroundEndpoint}px`;
     backgroundLeftTopCorner.style.cssText = `
-        width: ${coords.topHorizontalStripe.right}px;
-        height: ${coords.topHorizontalStripe.top}px;
-    `;
-    backgroundLeftStripes.style.cssText = `
-        top: ${coords.topHorizontalStripe.top}px;
-        width: ${coords.topHorizontalStripe.right}px;
-    `;
-    backgroundTopStripes.style.cssText = `
-        left: ${coords.topHorizontalStripe.right}px;
-        width: ${coords.verticalStripe.right - coords.topHorizontalStripe.right}px;
-        height: ${coords.topHorizontalStripe.bottom}px;
-    `;
-    backgroundBottomStripes.style.cssText = `
-        left: ${coords.topHorizontalStripe.right}px;
-        width: ${coords.verticalStripe.right - coords.topHorizontalStripe.right}px;
+        width: ${getCoords(document.querySelector("#top-rectangle")).right}px;
+        height: ${getCoords(document.querySelector("#top-rectangle")).top}px;
     `;
 
-    const topVerticalStripeWidth = verticalStripe.getBoundingClientRect().width,
-        leftHorizontalStripeHeight = topHorizontalStripe.getBoundingClientRect().height;
+    const verticalContWidth = backgroundEndpoint - backgroundLeftTopCorner.clientWidth,
+        verticalContLeft = backgroundLeftTopCorner.clientWidth,
+        verticalContBottom = backgroundLeftTopCorner.clientHeight;
+    setVertical(
+        ".background__top-stripes",
+        "#vertical-stripe",
+        verticalContWidth,
+        verticalContLeft - 1
+    );
+    setVertical(
+        ".background__bottom-stripes",
+        "#vertical-stripe-bottom",
+        verticalContWidth,
+        verticalContLeft - 1.5
+    );
 
-    topVerticalStripes.forEach((stripe, index) => {
-        if (index === 0) {
-            const smallest = document.querySelector("#smallest-v-stripe");
-            const width = smallest.getBoundingClientRect().width + .75;
-            stripe.style.width = stripe.style.flexBasis = `${width}px`;
-            return;
-        }
+    const horizontalHeight = getCoords(document.querySelector("#horizontal-stripe")).bottom;
+    setHorizontal(
+        ".background__left-stripes",
+        "#horizontal-stripe",
+        horizontalHeight - verticalContBottom,
+        verticalContBottom
+    );
 
-        stripe.style.width = stripe.style.flexBasis = `${topVerticalStripeWidth}px`;
-    });
-    leftHorizontalStripes.forEach(stripe => {
-        stripe.style.height = `${leftHorizontalStripeHeight}px`;
-    });
+
+    function setVertical(containerSelector, stripeSelector, containerWidth, leftPosition) {
+        const container = document.querySelector(containerSelector),
+            exampleStripe = document.querySelector(stripeSelector),
+            exmpStripeBox = exampleStripe.getBoundingClientRect(),
+            containerStripes = container.querySelectorAll(".vertical-stripe");
+
+        container.style.width = `${containerWidth}px`;
+        container.style.left = `${leftPosition}px`;
+        containerStripes.forEach((stripe, index) => {
+            stripe.setAttribute("width", exmpStripeBox.width);
+            stripe.setAttribute("x", exmpStripeBox.width * index);
+        });
+    }
+    function setHorizontal(containerSelector, stripeSelector, containerHeight, containerTop) {
+        const container = document.querySelector(containerSelector),
+            exampleStripe = document.querySelector(stripeSelector),
+            exmpStripeBox = exampleStripe.getBoundingClientRect(),
+            containerStripes = container.querySelectorAll(".horizontal-stripe");
+
+        container.style.height = `${containerHeight}px`;
+        container.style.top = `${containerTop}px`;
+        containerStripes.forEach((stripe, index) => {
+            stripe.setAttribute("height", exmpStripeBox.height);
+            stripe.setAttribute("y", exmpStripeBox.height * index);
+        });
+    }
 }

@@ -154,19 +154,17 @@
             height: 100%;
         }
 
-        .background__stripes--horizontal{
-            display: flex;
-        }
-
-        .vertical-stripe{
-            border-right: 1px solid rgba(76, 76, 76, .5);
+        .vertical-stripe {
+            stroke: #4c4c4c;
+            stroke-width: .8px;
             flex-shrink: 0;
             flex-grow: 0;
             height: 100%;
         }
 
-        .horizontal-stripe{
-            border-bottom: 1px solid rgba(76, 76, 76, .65);
+        .horizontal-stripe {
+            stroke: #4c4c4c;
+            stroke-width: .8px;
             width: 100%;
         }
 
@@ -176,14 +174,15 @@
             top: 0;
             left: 0;
             z-index: 50;
-            border-right: 1px solid #000;
-            border-bottom: 1px solid #000;
+            stroke: #4c4c4c;
+            stroke-width: 1px;
         }
 
         .background__left-stripes {
             position: absolute;
             left: 0;
             z-index: 50;
+            width: 60%;
         }
 
         .background__top-stripes {
@@ -192,11 +191,19 @@
             top: 0;
         }
 
+        .background__stripes--horizontal{
+            height: 70%;
+        }
+
         .background__bottom-stripes {
             position: absolute;
             z-index: 50;
             bottom: 0;
             background: #000;
+        }
+
+        .background__bottom-stripes {
+            height: 50%;
         }
 
         #price_slider {
@@ -3465,89 +3472,124 @@
                 </svg>
             </div>
             <div class="background">
-                <div class="background__left-top-corner"></div>
-                <div class="background__top-stripes background__stripes--horizontal">
-                    <div class="vertical-stripe vertical-stripe--top" style="background: #f8d795;"></div>
-                    <div class="vertical-stripe vertical-stripe--top" style="background: #e6e786;"></div>
-                    <div class="vertical-stripe vertical-stripe--top" style="background: #d3c770;"></div>
-                    <div class="vertical-stripe vertical-stripe--top" style="background: #f4e47c;"></div>
-                    <div class="vertical-stripe vertical-stripe--top" style="background: #b2cc24;"></div>
-                    <div class="vertical-stripe vertical-stripe--top" style="background: #9fbc62;"></div>
-                    <div class="vertical-stripe vertical-stripe--top" style="background: #82bb26;"></div>
-                    <div class="vertical-stripe vertical-stripe--top" style="background: #72b62b;"></div>
-                    <div class="vertical-stripe vertical-stripe--top" style="background: #bbd47a;"></div>
-                    <div class="vertical-stripe vertical-stripe--top" style="background: #61a9b0;"></div>
-                    <div class="vertical-stripe vertical-stripe--top" style="background: #b6c8d3;"></div>
-                    <div class="vertical-stripe vertical-stripe--top" style="background: #61a9b0;"></div>
-                    <div class="vertical-stripe vertical-stripe--top" style="background: #6e7670;"></div>
-                    <div class="vertical-stripe vertical-stripe--top" style="background: #6f8097;"></div>
-                    <div class="vertical-stripe vertical-stripe--top" style="background: #b2d7b2;"></div>
-                    <div class="vertical-stripe vertical-stripe--top" style="background: #7bc5ae;"></div>
-                    <div class="vertical-stripe vertical-stripe--top" style="background: #096435;"></div>
-                    <div class="vertical-stripe vertical-stripe--top" style="background: #547e68;"></div>
-                    <div class="vertical-stripe vertical-stripe--top" style="background: #224735;"></div>
-                    <div class="vertical-stripe vertical-stripe--top" style="background: #49b05d;"></div>
-                    <div class="vertical-stripe vertical-stripe--top" style="background: #a9c81d;"></div>
-                    <div class="vertical-stripe vertical-stripe--top" style="background: #aea51d;"></div>
-                    <div class="vertical-stripe vertical-stripe--top" style="background: #e1e9ae;"></div>
-                    <div class="vertical-stripe vertical-stripe--top" style="background: #a09a44;"></div>
-                    <div class="vertical-stripe vertical-stripe--top" style="background: #7c6c53;"></div>
-                    <div class="vertical-stripe vertical-stripe--top" style="background: #fbd6a7;"></div>
-                    <div class="vertical-stripe vertical-stripe--top" style="background: #f0c21d;"></div>
-                    <div class="vertical-stripe vertical-stripe--top" style="background: #f7af73;"></div>
-                    <div class="vertical-stripe vertical-stripe--top" style="background: #ee823e;"></div>
-                    <div class="vertical-stripe vertical-stripe--top" style="background: #cfaf69;"></div>
-                    <div class="vertical-stripe vertical-stripe--top" style="background: #f0c21d;"></div>
-                </div>
-                <div class="background__left-stripes">
-                    <div class="horizontal-stripe" style="background: #f8d795;"></div>
-                    <div class="horizontal-stripe" style="background: #f5c257;"></div>
-                    <div class="horizontal-stripe" style="background: #b96e14;"></div>
-                    <div class="horizontal-stripe" style="background: #c5a14c;"></div>
-                    <div class="horizontal-stripe" style="background: #fdc600;"></div>
-                    <div class="horizontal-stripe" style="background: #edb976;"></div>
-                    <div class="horizontal-stripe" style="background: #e5c600;"></div>
-                    <div class="horizontal-stripe" style="background: #ceab00;"></div>
-                    <div class="horizontal-stripe" style="background: #d29742;"></div>
-                    <div class="horizontal-stripe" style="background: #a8c514;"></div>
-                    <div class="horizontal-stripe" style="background: #4c8578;"></div>
-                    <div class="horizontal-stripe" style="background: #61ab99;"></div>
-                    <div class="horizontal-stripe" style="background: #64a375;"></div>
-                    <div class="horizontal-stripe" style="background: #34a935;"></div>
-                    <div class="horizontal-stripe" style="background: #34ca9a;"></div>
-                    <div class="horizontal-stripe" style="background: #66fecb;"></div>
-                    <div class="horizontal-stripe" style="background: #a8fdff;"></div>
-                    <div class="horizontal-stripe" style="background: #b6ff79;"></div>
-                    <div class="horizontal-stripe" style="background: #b2cc24;"></div>
-                    <div class="horizontal-stripe" style="background: #dcb65a;"></div>
-                    <div class="horizontal-stripe" style="background: #cf935f;"></div>
-                    <div class="horizontal-stripe" style="background: #b18a43;"></div>
-                    <div class="horizontal-stripe" style="background: #ea6013;"></div>
-                    <div class="horizontal-stripe" style="background: #e62f2e;"></div>
-                    <div class="horizontal-stripe" style="background: #d31f43;"></div>
-                    <div class="horizontal-stripe" style="background: #f18d88;"></div>
-                    <div class="horizontal-stripe" style="background: #ce979a;"></div>
-                    <div class="horizontal-stripe" style="background: #f4c0bd;"></div>
-                    <div class="horizontal-stripe" style="background: #e5aeae;"></div>
-                    <div class="horizontal-stripe" style="background: #e8a2bb;"></div>
-                    <div class="horizontal-stripe" style="background: #b5c7d2;"></div>
-                    <div class="horizontal-stripe" style="background: #198abd;"></div>
-                    <div class="horizontal-stripe" style="background: #54c2e2;"></div>
-                    <div class="horizontal-stripe" style="background: #91a5d1;"></div>
-                    <div class="horizontal-stripe" style="background: #7790c6;"></div>
-                    <div class="horizontal-stripe" style="background: #9087b0;"></div>
-                    <div class="horizontal-stripe" style="background: #9c99c5;"></div>
-                    <div class="horizontal-stripe" style="background: #dcb5df;"></div>
-                    <div class="horizontal-stripe" style="background: #ba94bf;"></div>
-                    <div class="horizontal-stripe" style="background: #c69ec5;"></div>
-                    <div class="horizontal-stripe" style="background: #b275a4;"></div>
-                    <div class="horizontal-stripe" style="background: #c86a99;"></div>
-                    <div class="horizontal-stripe" style="background: #82368c;"></div>
-                    <div class="horizontal-stripe" style="background: #b55ea1;"></div>
-                    <div class="horizontal-stripe" style="background: #c32e89;"></div>
-                    <div class="horizontal-stripe" style="background: #a0378d;"></div>
-                </div>
-                <div class="background__bottom-stripes"></div>
+                <svg class="background__left-top-corner">
+                    <rect fill="#f8d795" width="100%" height="100%"></rect>
+                </svg>
+                <svg class="background__top-stripes background__stripes--horizontal">
+                    <rect class="vertical-stripe vertical-stripe--top" fill="#f8d795"></rect>
+                    <rect class="vertical-stripe vertical-stripe--top" fill="#e6e786"></rect>
+                    <rect class="vertical-stripe vertical-stripe--top" fill="#d3c770"></rect>
+                    <rect class="vertical-stripe vertical-stripe--top" fill="#f4e47c"></rect>
+                    <rect class="vertical-stripe vertical-stripe--top" fill="#b2cc24"></rect>
+                    <rect class="vertical-stripe vertical-stripe--top" fill="#9fbc62"></rect>
+                    <rect class="vertical-stripe vertical-stripe--top" fill="#82bb26"></rect>
+                    <rect class="vertical-stripe vertical-stripe--top" fill="#72b62b"></rect>
+                    <rect class="vertical-stripe vertical-stripe--top" fill="#bbd47a"></rect>
+                    <rect class="vertical-stripe vertical-stripe--top" fill="#61a9b0"></rect>
+                    <rect class="vertical-stripe vertical-stripe--top" fill="#b6c8d3"></rect>
+                    <rect class="vertical-stripe vertical-stripe--top" fill="#61a9b0"></rect>
+                    <rect class="vertical-stripe vertical-stripe--top" fill="#6e7670"></rect>
+                    <rect class="vertical-stripe vertical-stripe--top" fill="#6f8097"></rect>
+                    <rect class="vertical-stripe vertical-stripe--top" fill="#b2d7b2"></rect>
+                    <rect class="vertical-stripe vertical-stripe--top" fill="#7bc5ae"></rect>
+                    <rect class="vertical-stripe vertical-stripe--top" fill="#096435"></rect>
+                    <rect class="vertical-stripe vertical-stripe--top" fill="#547e68"></rect>
+                    <rect class="vertical-stripe vertical-stripe--top" fill="#224735"></rect>
+                    <rect class="vertical-stripe vertical-stripe--top" fill="#49b05d"></rect>
+                    <rect class="vertical-stripe vertical-stripe--top" fill="#a9c81d"></rect>
+                    <rect class="vertical-stripe vertical-stripe--top" fill="#aea51d"></rect>
+                    <rect class="vertical-stripe vertical-stripe--top" fill="#e1e9ae"></rect>
+                    <rect class="vertical-stripe vertical-stripe--top" fill="#a09a44"></rect>
+                    <rect class="vertical-stripe vertical-stripe--top" fill="#7c6c53"></rect>
+                    <rect class="vertical-stripe vertical-stripe--top" fill="#fbd6a7"></rect>
+                    <rect class="vertical-stripe vertical-stripe--top" fill="#f0c21d"></rect>
+                    <rect class="vertical-stripe vertical-stripe--top" fill="#f7af73"></rect>
+                    <rect class="vertical-stripe vertical-stripe--top" fill="#ee823e"></rect>
+                    <rect class="vertical-stripe vertical-stripe--top" fill="#cfaf69"></rect>
+                    <rect class="vertical-stripe vertical-stripe--top" fill="#f0c21d"></rect>
+                </svg>
+                <svg class="background__left-stripes">
+                    <rect class="horizontal-stripe" fill="#f8d795"></rect>
+                    <rect class="horizontal-stripe" fill="#f5c257"></rect>
+                    <rect class="horizontal-stripe" fill="#b96e14"></rect>
+                    <rect class="horizontal-stripe" fill="#c5a14c"></rect>
+                    <rect class="horizontal-stripe" fill="#fdc600"></rect>
+                    <rect class="horizontal-stripe" fill="#edb976"></rect>
+                    <rect class="horizontal-stripe" fill="#e5c600"></rect>
+                    <rect class="horizontal-stripe" fill="#ceab00"></rect>
+                    <rect class="horizontal-stripe" fill="#d29742"></rect>
+                    <rect class="horizontal-stripe" fill="#a8c514"></rect>
+                    <rect class="horizontal-stripe" fill="#4c8578"></rect>
+                    <rect class="horizontal-stripe" fill="#61ab99"></rect>
+                    <rect class="horizontal-stripe" fill="#64a375"></rect>
+                    <rect class="horizontal-stripe" fill="#34a935"></rect>
+                    <rect class="horizontal-stripe" fill="#34ca9a"></rect>
+                    <rect class="horizontal-stripe" fill="#66fecb"></rect>
+                    <rect class="horizontal-stripe" fill="#a8fdff"></rect>
+                    <rect class="horizontal-stripe" fill="#b6ff79"></rect>
+                    <rect class="horizontal-stripe" fill="#b2cc24"></rect>
+                    <rect class="horizontal-stripe" fill="#dcb65a"></rect>
+                    <rect class="horizontal-stripe" fill="#cf935f"></rect>
+                    <rect class="horizontal-stripe" fill="#b18a43"></rect>
+                    <rect class="horizontal-stripe" fill="#ea6013"></rect>
+                    <rect class="horizontal-stripe" fill="#e62f2e"></rect>
+                    <rect class="horizontal-stripe" fill="#d31f43"></rect>
+                    <rect class="horizontal-stripe" fill="#f18d88"></rect>
+                    <rect class="horizontal-stripe" fill="#ce979a"></rect>
+                    <rect class="horizontal-stripe" fill="#f4c0bd"></rect>
+                    <rect class="horizontal-stripe" fill="#e5aeae"></rect>
+                    <rect class="horizontal-stripe" fill="#e8a2bb"></rect>
+                    <rect class="horizontal-stripe" fill="#b5c7d2"></rect>
+                    <rect class="horizontal-stripe" fill="#198abd"></rect>
+                    <rect class="horizontal-stripe" fill="#54c2e2"></rect>
+                    <rect class="horizontal-stripe" fill="#91a5d1"></rect>
+                    <rect class="horizontal-stripe" fill="#7790c6"></rect>
+                    <rect class="horizontal-stripe" fill="#9087b0"></rect>
+                    <rect class="horizontal-stripe" fill="#9c99c5"></rect>
+                    <rect class="horizontal-stripe" fill="#dcb5df"></rect>
+                    <rect class="horizontal-stripe" fill="#ba94bf"></rect>
+                    <rect class="horizontal-stripe" fill="#c69ec5"></rect>
+                    <rect class="horizontal-stripe" fill="#b275a4"></rect>
+                    <rect class="horizontal-stripe" fill="#c86a99"></rect>
+                    <rect class="horizontal-stripe" fill="#82368c"></rect>
+                    <rect class="horizontal-stripe" fill="#b55ea1"></rect>
+                    <rect class="horizontal-stripe" fill="#c32e89"></rect>
+                    <rect class="horizontal-stripe" fill="#a0378d"></rect>
+                </svg>
+                <svg class="background__bottom-stripes background__stripes--horizontal">
+                    <rect class="vertical-stripe vertical-stripe--bottom" fill="#853e90"></rect>
+                    <rect class="vertical-stripe vertical-stripe--bottom" fill="#752785"></rect>
+                    <rect class="vertical-stripe vertical-stripe--bottom" fill="#5d2469"></rect>
+                    <rect class="vertical-stripe vertical-stripe--bottom" fill="#984493"></rect>
+                    <rect class="vertical-stripe vertical-stripe--bottom" fill="#9f6b9f"></rect>
+                    <rect class="vertical-stripe vertical-stripe--bottom" fill="#6f536f"></rect>
+                    <rect class="vertical-stripe vertical-stripe--bottom" fill="#ce77a3"></rect>
+                    <rect class="vertical-stripe vertical-stripe--bottom" fill="#d0635e"></rect>
+                    <rect class="vertical-stripe vertical-stripe--bottom" fill="#e83c39"></rect>
+                    <rect class="vertical-stripe vertical-stripe--bottom" fill="#f49a6b"></rect>
+                    <rect class="vertical-stripe vertical-stripe--bottom" fill="#ca7370"></rect>
+                    <rect class="vertical-stripe vertical-stripe--bottom" fill="#a74a40"></rect>
+                    <rect class="vertical-stripe vertical-stripe--bottom" fill="#d92f1b"></rect>
+                    <rect class="vertical-stripe vertical-stripe--bottom" fill="#cfaf6a"></rect>
+                    <rect class="vertical-stripe vertical-stripe--bottom" fill="#f28d1b"></rect>
+                    <rect class="vertical-stripe vertical-stripe--bottom" fill="#d59746"></rect>
+                    <rect class="vertical-stripe vertical-stripe--bottom" fill="#f7af73"></rect>
+                    <rect class="vertical-stripe vertical-stripe--bottom" fill="#fad5a7"></rect>
+                    <rect class="vertical-stripe vertical-stripe--bottom" fill="#eacfe5"></rect>
+                    <rect class="vertical-stripe vertical-stripe--bottom" fill="#e66e81"></rect>
+                    <rect class="vertical-stripe vertical-stripe--bottom" fill="#c060a1"></rect>
+                    <rect class="vertical-stripe vertical-stripe--bottom" fill="#e83886"></rect>
+                    <rect class="vertical-stripe vertical-stripe--bottom" fill="#f097c0"></rect>
+                    <rect class="vertical-stripe vertical-stripe--bottom" fill="#c44a95"></rect>
+                    <rect class="vertical-stripe vertical-stripe--bottom" fill="#6b3c90"></rect>
+                    <rect class="vertical-stripe vertical-stripe--bottom" fill="#773073"></rect>
+                    <rect class="vertical-stripe vertical-stripe--bottom" fill="#624e61"></rect>
+                    <rect class="vertical-stripe vertical-stripe--bottom" fill="#586fa3"></rect>
+                    <rect class="vertical-stripe vertical-stripe--bottom" fill="#5a6678"></rect>
+                    <rect class="vertical-stripe vertical-stripe--bottom" fill="#834873"></rect>
+                    <rect class="vertical-stripe vertical-stripe--bottom" fill="#9e3e90"></rect>
+                    <rect class="vertical-stripe vertical-stripe--bottom" fill="#912985"></rect>
+                </svg>
             </div>
         </div>
     </div>
