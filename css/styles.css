@@ -18,9 +18,80 @@ body {
 .wrapper__svg>svg {
   max-height: calc(100vh - 100px);
   margin-top: 100px;
+  z-index: 100;
 }
 
 #layer_1 {
   max-width: 1920px;
   width: 100%;
+}
+
+#r_b {
+  right: 55px;
+}
+
+#l_b {
+  left: 55px;
+  position: absolute;
+}
+
+.page-arrow > svg {
+  fill: #fee414;
+  width: 20px;
+  height: 20px;
+}
+
+.page-arrow:hover > svg {
+  fill: #fff;
+}
+
+.page-arrow {
+  cursor: pointer;
+  width: 1.825vw;
+  height: 5.73125vw;
+  position: absolute;
+  border-radius: 50px;
+  border: 2px solid #fee414;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+}
+
+.page-arrow:hover {
+  background: #fee414;
+}
+
+@media (max-width: 1349px) {
+  #r_b {
+    right: 20px;
+  }
+
+  #l_b {
+    left: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .page-arrow {
+    width: 28px;
+    height: 88px;
+  }
+}
+
+@media (max-width: 560px) {
+  .wrapper__svg > svg {
+    margin-top: 40px;
+    max-height: calc(100vh - 40px);
+  }
+}
+
+@media (max-width: 459px) {
+  #r_b {
+    right: 15px;
+  }
+
+  #l_b {
+    left: 15px;
+  }
 }

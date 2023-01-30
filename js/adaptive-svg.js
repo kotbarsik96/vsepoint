@@ -1,3 +1,14 @@
+function getCoords(el){
+    const box = el.getBoundingClientRect();
+
+    return {
+        top: box.top + window.pageYOffset,
+        left: box.left + window.pageXOffset,
+        bottom: box.bottom + window.pageYOffset,
+        right: box.right + window.pageXOffset
+    }
+}
+
 currentResolution = null;
 
 async function adaptOnResize() {
@@ -17,7 +28,10 @@ async function adaptOnResize() {
     if (svg) svg.remove();
     wrapperSvg.insertAdjacentHTML("afterbegin", layout);
     clear();
-    setTimeout(clear, 0);
+    setTimeout(() => {
+        clear();
+        document.dispatchEvent(new CustomEvent("adapted"));
+    }, 0);
 
     function clear() {
         const svgChildren = document.querySelectorAll(".wrapper__svg > svg");
