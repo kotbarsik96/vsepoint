@@ -10,7 +10,10 @@ const resolutions = [
     "1980x1114"
 ];
 
-document.addEventListener("adapted", adaptBackground);
+document.addEventListener("adapted", () => {
+    adaptBackground();
+    setLinks();
+});
 window.addEventListener("resize", adaptBackground);
 
 const background = document.querySelector(".background"),
@@ -28,12 +31,26 @@ function adaptBackground() {
     const verticalContWidth = backgroundEndpoint - backgroundLeftTopCorner.clientWidth,
         verticalContLeft = backgroundLeftTopCorner.clientWidth,
         verticalContBottom = backgroundLeftTopCorner.clientHeight;
+    // верхние полоски
     setVertical(
         ".background__top-stripes",
         "#vertical-stripe",
         verticalContWidth,
         verticalContLeft - 1
     );
+    const smallestTopStripe = document.querySelector("#smallest-v-stripe");
+    if (smallestTopStripe) {
+        const w = smallestTopStripe.getBoundingClientRect().width;
+        const verticalStripeSelector = ".background__top-stripes .vertical-stripe";
+        const diff = document.querySelectorAll(verticalStripeSelector)[2].getBoundingClientRect()
+            .width - w;
+        const firstVerticalStripe = document.querySelector(verticalStripeSelector);
+        const oldShift = parseInt(firstVerticalStripe.getAttribute("x"));
+
+        firstVerticalStripe.setAttribute("width", w + diff * 2);
+    }
+
+    // нижние полоски
     setVertical(
         ".background__bottom-stripes",
         "#vertical-stripe-bottom",
@@ -48,6 +65,8 @@ function adaptBackground() {
         horizontalHeight - verticalContBottom,
         verticalContBottom
     );
+    document.querySelector(".background__left-stripes")
+        .style.width = getCoords(document.querySelector(".wrapper__svg > svg")).left + 10;
 
 
     function setVertical(containerSelector, stripeSelector, containerWidth, leftPosition) {
@@ -75,5 +94,26 @@ function adaptBackground() {
             stripe.setAttribute("height", exmpStripeBox.height);
             stripe.setAttribute("y", exmpStripeBox.height * index);
         });
+    }
+}
+
+function setLinks(){
+    const monday = document.querySelector("#monday-link");
+    const tuesday = document.querySelector("#tuesday-link");
+    const wednesday = document.querySelector("#wednesday-link");
+    const thursday = document.querySelector("#thursday-link");
+    const friday = document.querySelector("#friday-link");
+
+    monday.addEventListener("click", () => routeTo("1/"));
+    tuesday.addEventListener("click", () => routeTo("2/"));
+    wednesday.addEventListener("click", () => routeTo("3/"));
+    thursday.addEventListener("click", () => routeTo("4/"));
+    friday.addEventListener("click", () => routeTo("5/"));
+
+    function routeTo(path){
+        const link = document.createElement("a");
+        link.style.cssText = "visibility: hidden; position: absolute;";
+        link.setAttribute("href", `/vsepoint/${path}`);
+        link.click();
     }
 }
