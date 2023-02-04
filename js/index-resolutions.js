@@ -1,4 +1,5 @@
 const resolutions = [
+    "414x736",
     "800x600",
     "853x683",
     "1024x614",
@@ -20,7 +21,9 @@ const background = document.querySelector(".background"),
     backgroundLeftTopCorner = document.querySelector(".background__left-top-corner");
 
 function adaptBackground() {
-    const backgroundEndpoint = getCoords(document.querySelector("#vertical-stripe")).right;
+    const verticalStripe = document.querySelector("#vertical-stripe");
+    if(!verticalStripe) return;
+    const backgroundEndpoint = getCoords(verticalStripe).right;
     const svgCoords = getCoords(document.querySelector(".wrapper__svg > svg"));
 
     background.style.width = `${backgroundEndpoint}px`;
