@@ -77,7 +77,6 @@ function adaptBackground() {
     document.querySelector(".background__left-stripes")
         .style.width = `${svgCoords.left + 10}px`;
 
-
     function setVertical(containerSelector, stripeSelector, containerWidth, leftPosition) {
         const container = document.querySelector(containerSelector),
             exampleStripe = document.querySelector(stripeSelector),
