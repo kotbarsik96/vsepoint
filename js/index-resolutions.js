@@ -1,6 +1,6 @@
 const resolutions = [
     "414x736",
-    "480x320",
+    "480x360",
     "800x600",
     "853x683",
     "1024x614",
@@ -23,7 +23,7 @@ const background = document.querySelector(".background"),
 
 function adaptBackground() {
     const verticalStripe = document.querySelector("#vertical-stripe");
-    if(!verticalStripe) return;
+    if (!verticalStripe) return;
     const backgroundEndpoint = getCoords(verticalStripe).right;
     const svgCoords = getCoords(document.querySelector(".wrapper__svg > svg"));
 
@@ -95,13 +95,30 @@ function adaptBackground() {
         const container = document.querySelector(containerSelector),
             exampleStripe = document.querySelector(stripeSelector),
             exmpStripeBox = exampleStripe.getBoundingClientRect(),
-            containerStripes = container.querySelectorAll(".horizontal-stripe");
+            containerStripes = container.querySelectorAll(".horizontal-stripe"),
+            originStripes = document.querySelector(".wrapper__svg > svg").querySelectorAll(".horizontal-stripe-origin");
 
         container.style.height = `${containerHeight}px`;
         container.style.top = `${containerTop}px`;
+        let shift = 0;
         containerStripes.forEach((stripe, index) => {
-            stripe.setAttribute("height", exmpStripeBox.height);
-            stripe.setAttribute("y", exmpStripeBox.height * index);
+            stripe.setAttribute("y", shift);
+            if (index === 0) {
+                shift += exmpStripeBox.height;
+                stripe.setAttribute("height", exmpStripeBox.height);
+                return;
+            };
+            
+
+            let height = exmpStripeBox.height;
+            if(originStripes[index]) {
+                const origStripeHeight = originStripes[index].getBoundingClientRect().height;
+                const containerStripeHeight = origStripeHeight - (origStripeHeight / 100 * 3);
+                height = containerStripeHeight;
+            }
+
+            stripe.setAttribute("height", height);
+            shift += height;
         });
     }
 }
