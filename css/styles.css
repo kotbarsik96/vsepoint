@@ -102,6 +102,24 @@ body {
   background: #fee414;
 }
 
+.link-tip {
+  position: absolute;
+  white-space: nowrap;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  font-size: 19px;
+  z-index: 300;
+  text-align: left;
+  background: #fffef4;
+  padding: 0px 10px;
+  padding-bottom: 5px;
+  font-weight: 600;
+  border: 1px solid #66580038;
+  border-radius: 4px;
+  color: #665800;
+}
+
 [class*="link"] {
   cursor: pointer;
 }
@@ -133,7 +151,7 @@ body {
     height: 88px;
   }
 
-  .page-arrow > svg {
+  .page-arrow>svg {
     width: 17px;
     height: 17px;
   }

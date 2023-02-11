@@ -18,128 +18,117 @@ document.addEventListener("adapted", () => {
 });
 window.addEventListener("resize", adaptBackground);
 
+const mobileMedia = window.matchMedia("(max-width: 447px)");
+
 const background = document.querySelector(".background"),
     backgroundLeftTopCorner = document.querySelector(".background__left-top-corner");
 
 function adaptBackground() {
-    const verticalStripe = document.querySelector("#vertical-stripe");
-    if (!verticalStripe) return;
-    const backgroundEndpoint = getCoords(verticalStripe).right;
-    const svgCoords = getCoords(document.querySelector(".wrapper__svg > svg"));
+    if (mobileMedia.matches) return;
 
-    background.style.width = `${backgroundEndpoint}px`;
-    // backgroundLeftTopCorner.style.cssText = `
-    //     width: ${getCoords(document.querySelector("#top-rectangle")).right}px;
-    //     height: ${getCoords(document.querySelector("#top-rectangle")).top}px;
-    // `;
+    const svg = document.querySelector(".wrapper__svg > svg");
 
-    // const verticalContWidth = backgroundEndpoint - backgroundLeftTopCorner.clientWidth,
-    //     verticalContLeft = backgroundLeftTopCorner.clientWidth,
-    // verticalContBottom = backgroundLeftTopCorner.clientHeight;
-    // // верхние полоски
-    // setVertical(
-    //     ".background__top-stripes",
-    //     "#vertical-stripe",
-    //     verticalContWidth,
-    //     verticalContLeft - 1
-    // );
-    // document.querySelector(".background__top-stripes")
-    //     .style.height = `${svgCoords.top}px`;
-    // const smallestTopStripe = document.querySelector("#smallest-v-stripe");
-    // if (smallestTopStripe) {
-    //     const w = smallestTopStripe.getBoundingClientRect().width;
-    //     const verticalStripeSelector = ".background__top-stripes .vertical-stripe";
-    //     const diff = document.querySelectorAll(verticalStripeSelector)[2].getBoundingClientRect()
-    //         .width - w;
-    //     const firstVerticalStripe = document.querySelector(verticalStripeSelector);
+    setBackground();
+    setLeftStripes();
 
-    //     firstVerticalStripe.setAttribute("width", w + diff * 2);
-    // }
-
-    // // нижние полоски
-    // setVertical(
-    //     ".background__bottom-stripes",
-    //     "#vertical-stripe-bottom",
-    //     verticalContWidth,
-    //     verticalContLeft - 1.5
-    // );
-    // const windowHeight = document.documentElement.clientHeight || window.innerHeight;
-    // document.querySelector(".background__bottom-stripes")
-    //     .style.height = `${windowHeight - svgCoords.bottom}px`;
-
-    // горизонтальные полоски
-    const horizontalHeight = getCoords(document.querySelector("#horizontal-stripe")).bottom;
-    setHorizontal(
-        ".background__left-stripes",
-        "#horizontal-stripe",
-        svgCoords.bottom - svgCoords.top,
-        svgCoords.top
-    );
-    document.querySelector(".background__left-stripes")
-        .style.width = `${svgCoords.left + 10}px`;
-
-    function setVertical(containerSelector, stripeSelector, containerWidth, leftPosition) {
-        const container = document.querySelector(containerSelector),
-            exampleStripe = document.querySelector(stripeSelector),
-            exmpStripeBox = exampleStripe.getBoundingClientRect(),
-            containerStripes = container.querySelectorAll(".vertical-stripe");
-
-        container.style.width = `${containerWidth}px`;
-        container.style.left = `${leftPosition}px`;
-        containerStripes.forEach((stripe, index) => {
-            stripe.setAttribute("width", exmpStripeBox.width);
-            stripe.setAttribute("x", exmpStripeBox.width * index);
-        });
+    function setBackground() {
+        const bg = document.querySelector(".background"),
+            leftEdgePoint = getCoords(document.querySelector("#monday")).right;
+        bg.style.top = `${getCoords(svg).top}px`;
+        bg.style.width = `${leftEdgePoint}px`;
     }
-    function setHorizontal(containerSelector, stripeSelector, containerHeight, containerTop) {
-        const container = document.querySelector(containerSelector),
-            exampleStripe = document.querySelector(stripeSelector),
-            exmpStripeBox = exampleStripe.getBoundingClientRect(),
-            containerStripes = container.querySelectorAll(".horizontal-stripe"),
-            originStripes = document.querySelector(".wrapper__svg > svg").querySelectorAll(".horizontal-stripe-origin");
+    function setLeftStripes() {
+        const originalLeftStripes = document.querySelectorAll("#horizontal-stripes-original > g"),
+            backgroundLeftStripes = document.querySelectorAll(".background__left-stripes > rect"),
+            bgLsContainer = document.querySelector(".background__left-stripes");
 
-        container.style.height = `${containerHeight}px`;
-        container.style.top = `${containerTop}px`;
         let shift = 0;
-        containerStripes.forEach((stripe, index) => {
-            stripe.setAttribute("y", shift);
-            if (index === 0) {
-                shift += exmpStripeBox.height;
-                stripe.setAttribute("height", exmpStripeBox.height);
-                return;
-            };
-            
+        backgroundLeftStripes.forEach((stripe, index) => {
+            const original = originalLeftStripes[index];
+            if (!original) return;
 
-            let height = exmpStripeBox.height;
-            if(originStripes[index]) {
-                const origStripeHeight = originStripes[index].getBoundingClientRect().height;
-                const containerStripeHeight = origStripeHeight - (origStripeHeight / 100 * 3);
-                height = containerStripeHeight;
-            }
-
+            const heightRaw = original.getBoundingClientRect().height;
+            const height = heightRaw - (heightRaw / 100 * 3);
             stripe.setAttribute("height", height);
+            stripe.setAttribute("y", shift);
             shift += height;
         });
+        bgLsContainer.style.width = `${getCoords(svg).left + 10}px`;
     }
 }
 
 function setLinks() {
-    const mondays = document.querySelectorAll(".monday-link"),
-        tuesdays = document.querySelectorAll(".tuesday-link"),
-        wednesdays = document.querySelectorAll(".wednesday-link"),
-        thursdays = document.querySelectorAll(".thursday-link"),
-        fridays = document.querySelectorAll(".friday-link");
+    const mondays = [document.querySelector("#monday"), document.querySelector("#risunok_1")],
+        tuesdays = [document.querySelector("#tuesday"), document.querySelector("#risunok_2")],
+        wednesdays = [document.querySelector("#wednesday"), document.querySelector("#risunok_3")],
+        thursdays = [document.querySelector("#thursday"), document.querySelector("#risunok_4")],
+        fridays = [document.querySelector("#friday"), document.querySelector("#risunok_5")]
+    risunokMain = [
+        document.querySelector("#risunok-main"),
+        document.querySelector("#svg-background")
+    ];
 
-    mondays.forEach(m => m.addEventListener("click", () => routeTo("1/")));
-    tuesdays.forEach(t => t.addEventListener("click", () => routeTo("2/")));
-    wednesdays.forEach(w => w.addEventListener("click", () => routeTo("3/")));
-    thursdays.forEach(th => th.addEventListener("click", () => routeTo("4/")));
-    fridays.forEach(f => f.addEventListener("click", () => routeTo("5/")));
+    mondays.forEach(link => {
+        if(!link) return;
+        link.addEventListener("click", () => routeTo("1/"));
+        initHover(link, `Перейти на отдельную страницу "Понедельник"`);
+    });
+    tuesdays.forEach(link => {
+        if(!link) return;
+        link.addEventListener("click", () => routeTo("2/"));
+        initHover(link, `Перейти на отдельную страницу "Вторник"`);
+    });
+    wednesdays.forEach(link => {
+        if(!link) return;
+        link.addEventListener("click", () => routeTo("3/"));
+        initHover(link, `Перейти на отдельную страницу "Среда"`);
+    });
+    thursdays.forEach(link => {
+        link.addEventListener("click", () => routeTo("4/"));
+        initHover(link, `Перейти на отдельную страницу "Четверг"`);
+    });
+    fridays.forEach(link => {
+        if(!link) return;
+        link.addEventListener("click", () => routeTo("5/"));
+        initHover(link, `Перейти на отдельную страницу "Пятница"` );
+    });
+
+    risunokMain.forEach(link => {
+        if(!link) return;
+        initHover(link, "Нажмите мышкой, чтобы скачать", true);
+    });
 
     function routeTo(path) {
         const link = document.createElement("a");
         link.style.cssText = "visibility: hidden; position: absolute;";
         link.setAttribute("href", `/vsepoint/${path}`);
         link.click();
+    }
+    function initHover(link, text, stickyToCursor = false) {
+        const wrapper = document.querySelector(".wrapper");
+        link.addEventListener("mouseover", onMouseover);
+        link.addEventListener("mouseleave", onMouseleave);
+        const tip = document.createElement("div");
+        tip.classList.add("link-tip");
+        tip.innerHTML = text;
+        if(stickyToCursor) link.style.position = "fixed";
+
+        function onMouseover() {
+            link.addEventListener("mousemove", onMousemove);
+            if (!tip.closest("body")) wrapper.append(tip);
+        }
+        function onMouseleave() {
+            link.removeEventListener("mousemove", onMousemove);
+            tip.remove();
+        }
+        function onMousemove(event) {
+            if (stickyToCursor) {
+                tip.style.top = `${event.clientY - 50}px`;
+                tip.style.left = `${event.clientX}px`;
+            } else {
+                tip.style.top = `${getCoords(event.currentTarget).top - 40}px`;
+                tip.style.left = `${getCoords(event.currentTarget).left + 50}px`;
+            }
+        }
     }
 }
