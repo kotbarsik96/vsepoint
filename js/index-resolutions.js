@@ -58,11 +58,11 @@ function adaptBackground() {
 }
 
 function setLinks() {
-    const mondays = [document.querySelector("#monday"), document.querySelector("#risunok_1")],
-        tuesdays = [document.querySelector("#tuesday"), document.querySelector("#risunok_2")],
-        wednesdays = [document.querySelector("#wednesday"), document.querySelector("#risunok_3")],
-        thursdays = [document.querySelector("#thursday"), document.querySelector("#risunok_4")],
-        fridays = [document.querySelector("#friday"), document.querySelector("#risunok_5")]
+    const mondays = [document.querySelector("#monday-link")],
+        tuesdays = [document.querySelector("#tuesday-link")],
+        wednesdays = [document.querySelector("#wednesday-link")],
+        thursdays = [document.querySelector("#thursday-link")],
+        fridays = [document.querySelector("#friday-link")]
     risunokMain = [
         document.querySelector("#risunok-main"),
         document.querySelector("#svg-background")
@@ -84,13 +84,14 @@ function setLinks() {
         initHover(link, `Перейти на отдельную страницу "Среда"`);
     });
     thursdays.forEach(link => {
+        if(!link) return;
         link.addEventListener("click", () => routeTo("4/"));
         initHover(link, `Перейти на отдельную страницу "Четверг"`);
     });
     fridays.forEach(link => {
         if(!link) return;
         link.addEventListener("click", () => routeTo("5/"));
-        initHover(link, `Перейти на отдельную страницу "Пятница"` );
+        initHover(link, `Перейти на отдельную страницу "Пятница"`);
     });
 
     risunokMain.forEach(link => {
@@ -127,7 +128,7 @@ function setLinks() {
                 tip.style.left = `${event.clientX}px`;
             } else {
                 tip.style.top = `${getCoords(event.currentTarget).top - 40}px`;
-                tip.style.left = `${getCoords(event.currentTarget).left + 50}px`;
+                tip.style.left = `${getCoords(event.currentTarget).left}px`;
             }
         }
     }
