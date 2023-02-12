@@ -10,14 +10,12 @@
     <meta name="description" content="Места распространения газеты «Все вакансии Нижнего Новгорода»">
     <meta name="keywords"
         content="Места, распространения, газеты, Все, вакансии, Нижнего, Новгорода, Места распространении газеты Все Вакансии Нижнего">
-    <meta property="og:title"
-        content="Места распространения газеты «Все вакансии Нижнего Новгорода»">
+    <meta property="og:title" content="Места распространения газеты «Все вакансии Нижнего Новгорода»">
     <meta property="og:url" content="https://online.vsevn.ru/vsepoint/">
     <meta property="og:description"
         content="Места распространения газеты «Все вакансии Нижнего Новгорода» вы можете бесплатно просмотреть в этом разделе.">
 
-    <meta property="twitter:title"
-        content="Места распространения газеты «Все вакансии Нижнего Новгорода»">
+    <meta property="twitter:title" content="Места распространения газеты «Все вакансии Нижнего Новгорода»">
     <meta property="twitter:description"
         content="Места распространения газеты «Все вакансии Нижнего Новгорода» вы можете бесплатно просмотреть в этом разделе.">
     <!-- <link rel="apple-touch-icon" sizes="180x180"
@@ -36,6 +34,7 @@
         <![endif]-->
     <script async="" src="https://mc.yandex.ru/metrika/tag.js"></script>
     <link rel="stylesheet" href="/vsepoint/css/styles.css">
+    <link rel="stylesheet" href="/vsepoint/css/font-glyphicons.css">
 
     <style>
         @font-face {
@@ -134,10 +133,6 @@
             background: #853e90;
         }
 
-        .header {
-            background: #fc1d00;
-        }
-
         .wrapper__svg>svg {
             width: auto !important;
             background: #fff;
@@ -159,12 +154,11 @@
         #wednesday,
         #thursday,
         #friday,
-        [id*="risunok"]
-         {
+        [id*="risunok"] {
             cursor: pointer;
         }
 
-        #svg-background{
+        #svg-background {
             cursor: pointer;
         }
 
@@ -185,7 +179,7 @@
 
         .horizontal-stripe {
             stroke: #4c4c4c;
-            stroke-width: .3px;
+            stroke-width: .1px;
             width: 100%;
         }
 
@@ -3487,8 +3481,83 @@
 
 <body>
     <header class="header">
-        <div class="header__top"></div>
-        <div class="header__bottom"></div>
+        <div class="header__top">
+            <div class="header__container">
+                <nav class="header__nav">
+                    <ul class="header-nav">
+                        <li class="header-nav__item">
+                            <a href="#" class="header-nav__link link">
+                                <span class="header-nav__icon glyphicon glyphicon-duplicate"></span>
+                                Архив
+                            </a>
+                        </li>
+                        <li class="header-nav__item">
+                            <a href="#" class="header-nav__link link">
+                                <svg class="header-nav__icon">
+                                    <use xlink:href="#bell"></use>
+                                </svg>
+                                Контакты
+                            </a>
+                        </li>
+                        <li class="header-nav__item">
+                            <a href="#" class="header-nav__link link">
+                                <span class="header-nav__icon glyphicon glyphicon-heart"></span>
+                                Лучший работодатель
+                            </a>
+                        </li>
+                        <li class="header-nav__item">
+                            <a href="#" class="header-nav__link link">
+                                <span class="header-nav__icon glyphicon g5 glyphicon-send"></span>
+                                Подписаться
+                            </a>
+                        </li>
+                        <li class="header-nav__item">
+                            <a href="#" class="header-nav__link link">
+                                <span class="header-nav__icon glyphicon g5 glyphicon-rub"></span>
+                                Прайс лист
+                            </a>
+                        </li>
+                        <li class="header-nav__item">
+                            <a href="#" class="header-nav__link link">
+                                <span class="header-nav__icon glyphicon g5 glyphicon-star-empty"></span>
+                                Свежий номер
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="header__mobile">
+                    <button class="header__mobile-button menu-button" type="button">
+                        <span class="menu-button"></span>
+                        <span class="menu-button"></span>
+                        <span class="menu-button"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="header__bottom">
+            <div class="header__container">
+                <div class="header__logo">
+                    <img src="/vsepoint/image/logo.svg" data-fullsize-image alt="Все Вакансии Нижнего">
+                </div>
+                <ul class="header__buttons">
+                    <li class="header__button-item">
+                        <a href="#" class="header__button button button--transparent">Создать макет</a>
+                    </li>
+                    <li class="header__button-item">
+                        <a href="#" class="header__button link">Вакансии и резюме</a>
+                    </li>
+                    <li class="header__button-item">
+                        <a href="#" class="header__button button">Наши преимущества</a>
+                    </li>
+                    <li class="header__button-item">
+                        <a href="#" class="header__button link">Подать объявление</a>
+                    </li>
+                    <li class="header__button-item">
+                        <a href="#" class="header__button link">Статьи</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </header>
     <div class="wrapper">
         <div class="wrapper__svg">
@@ -3557,8 +3626,17 @@
         </div>
     </div>
 
-    <script src="js/index-resolutions.js"></script>
-    <script src="js/adaptive-svg.js"></script>
+    <svg display="none">
+        <symbol id="bell">
+            <path
+                d="m15.43 15.53c-0.07 0.12-0.19 0.19-0.33 0.19h-14.2c-0.13 0-0.26-0.07-0.32-0.19c-0.07-0.12-0.07-0.26 0-0.38l1.28-2.14c0.59-0.99 0.9-2.12 0.9-3.27v-1.87c0-2.36 1.58-4.36 3.74-5.01v-1.34c0-0.82 0.67-1.49 1.49-1.49c0.82 0 1.49 0.67 1.49 1.49v1.34c2.16 0.64 3.74 2.64 3.74 5.01v1.87c0 1.15 0.31 2.28 0.91 3.27l1.28 2.14c0.07 0.11 0.07 0.26 0 0.38zm-5.07 0.94c-0.42 0.88-1.31 1.49-2.35 1.49c-1.04 0-1.93-0.61-2.35-1.49h4.71z">
+            </path>
+        </symbol>
+    </svg>
+
+    <script src="/vsepoint/js/index-resolutions.js"></script>
+    <script src="/vsepoint/js/adaptive-svg.js"></script>
+    <script src="/vsepoint/js/scripts.js"></script>
 </body>
 
 </html>

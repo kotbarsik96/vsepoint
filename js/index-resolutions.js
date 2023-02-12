@@ -24,6 +24,7 @@ const background = document.querySelector(".background"),
     backgroundLeftTopCorner = document.querySelector(".background__left-top-corner");
 
 function adaptBackground() {
+    document.querySelectorAll(".link-tip").forEach(link => link.remove());
     if (mobileMedia.matches) return;
 
     const svg = document.querySelector(".wrapper__svg > svg");
@@ -48,7 +49,7 @@ function adaptBackground() {
             if (!original) return;
 
             const heightRaw = original.getBoundingClientRect().height;
-            const height = heightRaw - (heightRaw / 100 * 3);
+            const height = heightRaw - (heightRaw / 100 * 3.2);
             stripe.setAttribute("height", height);
             stripe.setAttribute("y", shift);
             shift += height;
