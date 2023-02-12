@@ -205,11 +205,8 @@ body {
   width: 16px;
   height: 19px;
   color: inherit;
-  margin-right: 10px;
+  margin-right: 5px;
   transform: translate(0, -3px);
-}
-
-.header-nav__icon {
   fill: var(--text_color);
 }
 
@@ -268,7 +265,7 @@ body {
   max-height: calc(90vh - 100px);
   font-size: 18px;
   margin-right: 10px;
-  max-width: 500px;
+  max-width: 290px;
 }
 
 .header-menu .link {
@@ -308,16 +305,20 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 220px;
+  width: 70px;
   height: 70px;
   border: 1px solid #e1e1e1;
   margin: 0 15px 0 0;
+  position: relative;
+  border-radius: 5px;
+  flex: 0 0 70px;
 }
 
 .header-menu__profile-logo svg {
-  width: 132px;
-  height: 59px;
-  transform: scale(0.6);
+  width: 135px;
+  height: 62px;
+  transform: scale(0.4);
+  position: absolute;
 }
 
 .header-menu__profile-name-text {
@@ -448,10 +449,11 @@ body {
   transition-property: opacity;
   transition-duration: .5s;
   opacity: 1;
+  top: 50%;
 }
 
 .menu-button__item:last-child {
-  bottom: 0;
+  top: 100%;
 }
 
 .menu-button__item:first-child,
@@ -460,9 +462,13 @@ body {
   transition-duration: .5s;
 }
 
+.menu-button.__active .menu-button__item:first-child,
+.menu-button.__active .menu-button__item:last-child {
+  top: 50%;
+}
+
 .menu-button.__active .menu-button__item:first-child {
   transform: rotate(45deg);
-  top: 8px;
 }
 
 .menu-button.__active .menu-button__item:nth-child(2) {
@@ -471,7 +477,6 @@ body {
 
 .menu-button.__active .menu-button__item:last-child {
   transform: rotate(-45deg);
-  bottom: 7px;
 }
 
 /* UI - end */
@@ -616,6 +621,7 @@ body {
     left: 15px;
     right: auto;
     max-height: calc(90vh - 85px);
+    max-width: unset;
   }
 
   .header__mobile {
@@ -627,6 +633,16 @@ body {
     padding: 0 10px;
     position: relative;
     border-bottom: 1px solid rgba(255, 255, 255, .3);
+  }
+
+  .header-menu__profile-logo {
+    width: 220px;
+    flex: 0 0 220px;
+    height: 70px;
+  }
+
+  .header-menu__profile-logo svg {
+    transform: scale(0.6);
   }
 
   .header__buttons {
