@@ -27,35 +27,37 @@ function adaptBackground() {
     document.querySelectorAll(".link-tip").forEach(link => link.remove());
     if (mobileMedia.matches) return;
 
-    const svg = document.querySelector(".wrapper__svg > svg");
+    setTimeout(() => {
+        const svg = document.querySelector(".wrapper__svg > svg");
 
-    setBackground();
-    setLeftStripes();
+        setBackground();
+        setLeftStripes();
 
-    function setBackground() {
-        const bg = document.querySelector(".background"),
-            leftEdgePoint = getCoords(document.querySelector("#monday")).right;
-        bg.style.top = `${getCoords(svg).top}px`;
-        bg.style.width = `${leftEdgePoint}px`;
-    }
-    function setLeftStripes() {
-        const originalLeftStripes = document.querySelectorAll("#horizontal-stripes-original > g"),
-            backgroundLeftStripes = document.querySelectorAll(".background__left-stripes > rect"),
-            bgLsContainer = document.querySelector(".background__left-stripes");
+        function setBackground() {
+            const bg = document.querySelector(".background"),
+                leftEdgePoint = getCoords(document.querySelector("#monday")).right;
+            bg.style.top = `${getCoords(svg).top}px`;
+            bg.style.width = `${leftEdgePoint}px`;
+        }
+        function setLeftStripes() {
+            const originalLeftStripes = document.querySelectorAll("#horizontal-stripes-original > g"),
+                backgroundLeftStripes = document.querySelectorAll(".background__left-stripes > rect"),
+                bgLsContainer = document.querySelector(".background__left-stripes");
 
-        let shift = 0;
-        backgroundLeftStripes.forEach((stripe, index) => {
-            const original = originalLeftStripes[index];
-            if (!original) return;
+            let shift = 0;
+            backgroundLeftStripes.forEach((stripe, index) => {
+                const original = originalLeftStripes[index];
+                if (!original) return;
 
-            const heightRaw = original.getBoundingClientRect().height;
-            const height = heightRaw - (heightRaw / 100 * 3.2);
-            stripe.setAttribute("height", height);
-            stripe.setAttribute("y", shift);
-            shift += height;
-        });
-        bgLsContainer.style.width = `${getCoords(svg).left + 10}px`;
-    }
+                const heightRaw = original.getBoundingClientRect().height;
+                const height = heightRaw - (heightRaw / 100 * 3.2);
+                stripe.setAttribute("height", height);
+                stripe.setAttribute("y", shift);
+                shift += height;
+            });
+            bgLsContainer.style.width = `${getCoords(svg).left + 10}px`;
+        }
+    }, 0);
 }
 
 function setLinks() {
@@ -70,33 +72,33 @@ function setLinks() {
     ];
 
     mondays.forEach(link => {
-        if(!link) return;
+        if (!link) return;
         link.addEventListener("click", () => routeTo("1/"));
         initHover(link, `Перейти на отдельную страницу "Понедельник"`);
     });
     tuesdays.forEach(link => {
-        if(!link) return;
+        if (!link) return;
         link.addEventListener("click", () => routeTo("2/"));
         initHover(link, `Перейти на отдельную страницу "Вторник"`);
     });
     wednesdays.forEach(link => {
-        if(!link) return;
+        if (!link) return;
         link.addEventListener("click", () => routeTo("3/"));
         initHover(link, `Перейти на отдельную страницу "Среда"`);
     });
     thursdays.forEach(link => {
-        if(!link) return;
+        if (!link) return;
         link.addEventListener("click", () => routeTo("4/"));
         initHover(link, `Перейти на отдельную страницу "Четверг"`);
     });
     fridays.forEach(link => {
-        if(!link) return;
+        if (!link) return;
         link.addEventListener("click", () => routeTo("5/"));
         initHover(link, `Перейти на отдельную страницу "Пятница"`);
     });
 
     risunokMain.forEach(link => {
-        if(!link) return;
+        if (!link) return;
         initHover(link, "Нажмите мышкой, чтобы скачать", true);
     });
 
@@ -113,7 +115,8 @@ function setLinks() {
         const tip = document.createElement("div");
         tip.classList.add("link-tip");
         tip.innerHTML = text;
-        if(stickyToCursor) link.style.position = "fixed";
+        if (stickyToCursor) link.style.position = "fixed";
+        document.addEventListener("click", onMouseleave);
 
         function onMouseover() {
             link.addEventListener("mousemove", onMousemove);

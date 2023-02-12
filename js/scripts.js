@@ -66,6 +66,7 @@ class FullsizeImage {
         this.onImageClick = this.onImageClick.bind(this);
         this.onPopupClick = this.onPopupClick.bind(this);
         this.setCrossPosition = this.setCrossPosition.bind(this);
+        this.removePopup = this.removePopup.bind(this);
 
         this.rootElem = node;
         this.rootElem.addEventListener("click", this.onImageClick);
@@ -91,6 +92,7 @@ class FullsizeImage {
         const cross = body.querySelector(".popup__close");
 
         popup.addEventListener("click", this.onPopupClick);
+        cross.addEventListener("click", this.removePopup);
 
         this.popup = { popup, body, cross };
     }
@@ -136,14 +138,21 @@ class FullsizeImage {
 
 class Header {
     constructor(node) {
-        this.toggleMobileMenu = this.toggleMobileMenu.bind(this);
+        this.onMenuBtnClick = this.onMenuBtnClick.bind(this);
+        this.toggleMenu = this.toggleMenu.bind(this);
 
         this.rootElem = node;
-        this.mobileMenuButton = this.rootElem.querySelector(".header__mobile-button");
+        this.menuButtons = this.rootElem.querySelectorAll(".menu-button");
 
-        this.mobileMenuButton.addEventListener("click", this.toggleMobileMenu);
+        this.menuButtons.forEach(menuBtn => {
+            menuBtn.addEventListener("click", this.onMenuBtnClick);
+        });
     }
-    toggleMobileMenu(action = null) {
+    onMenuBtnClick(event){
+        const menuBtn = event.currentTarget;
+        this.toggleMenu(menuBtn);
+    }
+    toggleMenu(btn, action = null) {
         show = show.bind(this);
         hide = hide.bind(this);
 
@@ -152,15 +161,15 @@ class Header {
             if (action === "hide") return hide();
         }
 
-        this.mobileMenuButton.classList.contains("__active")
+        btn.classList.contains("__active")
             ? hide()
             : show();
 
         function show() {
-            this.mobileMenuButton.classList.add("__active")
+            btn.classList.add("__active")
         }
         function hide() {
-            this.mobileMenuButton.classList.remove("__active")
+            btn.classList.remove("__active")
         }
     }
 }
