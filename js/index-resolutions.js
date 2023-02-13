@@ -42,22 +42,29 @@ function adaptBackground() {
         function setLeftStripes() {
             const originalLeftStripes = document.querySelectorAll("#horizontal-stripes-original > g"),
                 backgroundLeftStripes = document.querySelectorAll(".background__left-stripes > rect"),
-                bgLsContainer = document.querySelector(".background__left-stripes");
+                bgLsContainer = document.querySelector(".background__left-stripes"),
+                leftRectangle = document.querySelector("#g29090"),
+                width = leftRectangle ? getCoords(leftRectangle).left : null;
 
             let shift = 0;
             backgroundLeftStripes.forEach((stripe, index) => {
                 const original = originalLeftStripes[index];
                 if (!original) return;
 
+                let coef = 3.2;
+                if(window.matchMedia("(max-width: 899px)").matches) coef = 3.2;
+                if(window.matchMedia("(max-width: 1119px)").matches) coef = 3.2;
+                if(window.matchMedia("(max-width: 1289px)").matches) coef = 2.7;
+                if(window.matchMedia("(max-width: 1799px)").matches) coef = 2.5;
                 const heightRaw = original.getBoundingClientRect().height;
-                const height = heightRaw - (heightRaw / 100 * 3.2);
+                const height = heightRaw - (heightRaw / 100 * coef);
                 stripe.setAttribute("height", height);
                 stripe.setAttribute("y", shift);
                 shift += height;
             });
-            bgLsContainer.style.width = `${getCoords(svg).left + 10}px`;
+            bgLsContainer.style.width = `${width || getCoords(svg).left + 10}px`;
         }
-    }, 0);
+    }, 100);
 }
 
 function setLinks() {
