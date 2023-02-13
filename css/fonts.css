@@ -50,6 +50,152 @@
 
 /* FONTS - end */
 
+/* ICOMOON */
+
+@font-face {
+  font-family: 'icomoon';
+  src: url('/vsepoint/fonts/icomoon.eot?fogrkq');
+  src: url('/vsepoint/fonts/icomoon.eot?fogrkq#iefix') format('embedded-opentype'),
+        url('/vsepoint/fonts/icomoon.ttf?fogrkq') format('truetype'),
+        url('/vsepoint/fonts/icomoon.woff?fogrkq') format('woff'),
+        url('/vsepoint/fonts/icomoon.svg?fogrkq#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-eye:before {
+  content: "\e912";
+}
+
+.icon-bell:before {
+  content: "\e91c";
+}
+
+.icon-star:before {
+  content: "\e91b";
+}
+
+.icon-user-search:before {
+  content: "\e908";
+}
+
+.icon-user-building:before {
+  content: "\e909";
+}
+
+.icon-thumb-up:before {
+  content: "\e90a";
+}
+
+.icon-lamp:before {
+  content: "\e90b";
+}
+
+.icon-house:before {
+  content: "\e90c";
+}
+
+.icon-heart:before {
+  content: "\e90d";
+}
+
+.icon-hand-heart:before {
+  content: "\e90e";
+}
+
+.icon-graph:before {
+  content: "\e90f";
+}
+
+.icon-gear:before {
+  content: "\e910";
+}
+
+.icon-flag:before {
+  content: "\e911";
+}
+
+.icon-euro:before {
+  content: "\e913";
+}
+
+.icon-desktop-mobile:before {
+  content: "\e914";
+}
+
+.icon-cup:before {
+  content: "\e915";
+}
+
+.icon-cash:before {
+  content: "\e916";
+}
+
+.icon-case:before {
+  content: "\e917";
+}
+
+.icon-calendar:before {
+  content: "\e918";
+}
+
+.icon-building:before {
+  content: "\e919";
+}
+
+.icon-banknote:before {
+  content: "\e91a";
+}
+
+.icon-layout:before {
+  content: "\e907";
+}
+
+.icon-sign-in:before {
+  content: "\e904";
+}
+
+.icon-sign-up:before {
+  content: "\e905";
+}
+
+.icon-advantages:before {
+  content: "\e900";
+}
+
+.icon-applicant:before {
+  content: "\e901";
+}
+
+.icon-articles:before {
+  content: "\e902";
+}
+
+.icon-megaphone:before {
+  content: "\e903";
+}
+
+.icon-vacancies_resumes:before {
+  content: "\e906";
+}
+
+/* ICOMOON - end */
+
 /* GLYPHICONS */
 
 @font-face {

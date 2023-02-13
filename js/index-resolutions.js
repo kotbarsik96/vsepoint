@@ -131,7 +131,7 @@ function setLinks() {
                 tip.style.top = `${event.clientY - 50}px`;
                 tip.style.left = `${event.clientX}px`;
             } else {
-                tip.style.top = `${getCoords(event.currentTarget).top - 40}px`;
+                tip.style.top = `${event.clientY - 50}px`;
                 tip.style.left = `${getCoords(event.currentTarget).left}px`;
             }
         }

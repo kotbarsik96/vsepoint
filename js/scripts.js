@@ -1,3 +1,40 @@
+// определить браузер
+function getBrowser() {
+    const userAgent = navigator.userAgent.toLowerCase();
+    let browser = [
+        userAgent.match(/chrome/),
+        userAgent.match(/opera/),
+        userAgent.match(/safari/),
+        userAgent.match(/firefox/)
+    ].find(br => br);
+    if (browser) browser = browser[0];
+
+    return browser;
+}
+const browser = getBrowser();
+
+function browsersFix() {
+    if (browser !== "firefox" && browser !== "safari") {
+        let addFixClass = [];
+        addFixClass = addFixClass
+            .concat(Array.from(document.querySelectorAll(".horizontal-stripe")));
+
+        addFixClass.forEach(el => {
+            el.classList.add("__chromium-fix");
+        });
+    }
+    if (browser === "firefox") {
+        let addMozfixClass = [];
+        addMozfixClass = addMozfixClass
+            .concat(Array.from(document.querySelectorAll(".header__mobile-signup.button")));
+
+        addMozfixClass.forEach(el => {
+            el.classList.add("__moz-fix");
+        });
+    }
+}
+browsersFix();
+
 function getCoords(el) {
     const box = el.getBoundingClientRect();
 
@@ -148,7 +185,7 @@ class Header {
             menuBtn.addEventListener("click", this.onMenuBtnClick);
         });
     }
-    onMenuBtnClick(event){
+    onMenuBtnClick(event) {
         const menuBtn = event.currentTarget;
         this.toggleMenu(menuBtn);
     }
