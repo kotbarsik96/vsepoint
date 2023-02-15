@@ -101,7 +101,7 @@ function setLinks() {
 
         function onMouseover() {
             link.addEventListener("mousemove", onMousemove);
-            if (!tip.closest("body")) wrapper.append(tip);
+            if (!tip.closest("body")) document.body.append(tip);
         }
         function onMouseleave() {
             link.removeEventListener("mousemove", onMousemove);
@@ -109,10 +109,10 @@ function setLinks() {
         }
         function onMousemove(event) {
             if (stickyToCursor) {
-                tip.style.top = `${event.clientY - 150}px`;
+                tip.style.top = `${event.clientY - 50}px`;
                 tip.style.left = `${event.clientX}px`;
             } else {
-                tip.style.top = `${event.clientY - 150}px`;
+                tip.style.top = `${event.clientY - 50}px`;
                 tip.style.left = `${getCoords(event.currentTarget).left}px`;
             }
         }
