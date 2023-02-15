@@ -1,4 +1,4 @@
-currentResolution = null;
+let currentResolution = null;
 
 async function adaptOnResize() {
     const wrapperSvg = document.querySelector(".wrapper__svg");

@@ -42,8 +42,8 @@
         }
 
         .wrapper__svg>svg {
-            width: auto !important;
             background: #fff;
+            position: absolute;
         }
 
         @media (max-width: 992px) {
@@ -67,32 +67,6 @@
 
         #svg-background {
             cursor: pointer;
-        }
-
-        .background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            z-index: 150;
-            pointer-events: none;
-        }
-
-        .horizontal-stripe {
-            stroke: #4c4c4c;
-            stroke-width: .3px;
-            width: 100%;
-        }
-
-        .horizontal-stripe.__chromium-fix{
-            stroke-width: .5px;
-        }
-
-        .background__left-stripes {
-            position: absolute;
-            left: 0;
-            z-index: 50;
-            height: 100%;
         }
 
         @media (max-width: 447px) {
@@ -419,70 +393,20 @@
 </header>
     <div class="wrapper">
         <div class="wrapper__svg">
-            <a href="/vsepoint/1/" id="r_b" class="page-arrow">
-                <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M7.20696 20.7071C6.81643 20.3166 6.81643 19.6834 7.20696 19.2929L14.4998 12L7.20696 4.70712C6.81643 4.3166 6.81643 3.68343 7.20696 3.29291L7.91406 2.5858C8.30459 2.19528 8.93775 2.19528 9.32827 2.5858L17.6818 10.9394C18.2676 11.5251 18.2676 12.4749 17.6818 13.0607L9.32828 21.4142C8.93775 21.8048 8.30459 21.8048 7.91406 21.4142L7.20696 20.7071Z" />
-                </svg>
-            </a>
-            <a href="/vsepoint/5/" id="l_b" class="page-arrow">
-                <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M17.4142 20.7071C17.8047 20.3166 17.8047 19.6834 17.4142 19.2929L10.1213 12L17.4142 4.70712C17.8047 4.3166 17.8047 3.68343 17.4142 3.29291L16.7071 2.5858C16.3166 2.19528 15.6834 2.19528 15.2929 2.5858L6.93934 10.9394C6.35355 11.5251 6.35355 12.4749 6.93934 13.0607L15.2929 21.4142C15.6834 21.8048 16.3166 21.8048 16.7071 21.4142L17.4142 20.7071Z" />
-                </svg>
-            </a>
-            <div class="background">
-                <svg class="background__left-stripes">
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#f8d795"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#f5c257"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#b96e14"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#c5a14c"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#fdc600"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#edb976"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#e5c600"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#ceab00"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#d29742"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#a8c514"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#4c8578"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#61ab99"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#64a375"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#34a935"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#34ca9a"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#66fecb"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#a8fdff"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#b6ff79"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#b2cc24"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#dcb65a"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#cf935f"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#b18a43"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#ea6013"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#e62f2e"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#d31f43"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#f18d88"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#ce979a"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#f4c0bd"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#e5aeae"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#e8a2bb"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#b5c7d2"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#198abd"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#54c2e2"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#91a5d1"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#7790c6"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#9087b0"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#9c99c5"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#dcb5df"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#ba94bf"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#c69ec5"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#b275a4"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#c86a99"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#82368c"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#b55ea1"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#c32e89"></rect>
-                    <rect height="0" width="100%" class="horizontal-stripe" fill="#a0378d"></rect>
-                </svg>
-            </div>
         </div>
     </div>
+    <a href="/vsepoint/1/" id="r_b" class="page-arrow">
+        <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M7.20696 20.7071C6.81643 20.3166 6.81643 19.6834 7.20696 19.2929L14.4998 12L7.20696 4.70712C6.81643 4.3166 6.81643 3.68343 7.20696 3.29291L7.91406 2.5858C8.30459 2.19528 8.93775 2.19528 9.32827 2.5858L17.6818 10.9394C18.2676 11.5251 18.2676 12.4749 17.6818 13.0607L9.32828 21.4142C8.93775 21.8048 8.30459 21.8048 7.91406 21.4142L7.20696 20.7071Z" />
+        </svg>
+    </a>
+    <a href="/vsepoint/5/" id="l_b" class="page-arrow">
+        <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M17.4142 20.7071C17.8047 20.3166 17.8047 19.6834 17.4142 19.2929L10.1213 12L17.4142 4.70712C17.8047 4.3166 17.8047 3.68343 17.4142 3.29291L16.7071 2.5858C16.3166 2.19528 15.6834 2.19528 15.2929 2.5858L6.93934 10.9394C6.35355 11.5251 6.35355 12.4749 6.93934 13.0607L15.2929 21.4142C15.6834 21.8048 16.3166 21.8048 16.7071 21.4142L17.4142 20.7071Z" />
+        </svg>
+    </a>
 
     <svg display="none">
         <symbol id="bell">
