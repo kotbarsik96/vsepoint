@@ -16,8 +16,8 @@ const browser = getBrowser();
 function browsersFix() {
     if (browser !== "firefox" && browser !== "safari") {
         let addFixClass = [];
-        addFixClass = addFixClass
-            .concat(Array.from(document.querySelectorAll(".horizontal-stripe")));
+        // addFixClass = addFixClass
+        //     .concat(Array.from(document.querySelectorAll(".header__button.link")));
 
         addFixClass.forEach(el => {
             el.classList.add("__chromium-fix");
@@ -27,6 +27,8 @@ function browsersFix() {
         let addMozfixClass = [];
         addMozfixClass = addMozfixClass
             .concat(Array.from(document.querySelectorAll(".header__mobile-signup.button")));
+        addMozfixClass = addMozfixClass
+            .concat(Array.from(document.querySelectorAll(".header__button.link")));
 
         addMozfixClass.forEach(el => {
             el.classList.add("__moz-fix");

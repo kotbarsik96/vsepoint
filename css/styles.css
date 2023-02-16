@@ -128,10 +128,6 @@ body {
   pointer-events: none;
 }
 
-.link-tip--risunok-main {
-  font-size: 1vw;
-}
-
 /* HEADER */
 
 :root {
@@ -175,6 +171,10 @@ body {
 
 .header__bottom .header__button.link {
   transform: translate(0, -1px);
+}
+
+.header__bottom .header__button.link.__moz-fix {
+  transform: translate(0, -2px);
 }
 
 .header__container {

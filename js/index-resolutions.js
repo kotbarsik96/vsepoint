@@ -93,6 +93,10 @@ function setLinks() {
         link.addEventListener("mouseleave", onMouseleave);
         const tip = document.createElement("div");
         tip.classList.add("link-tip");
+        const isDownloadLink = link.getAttribute("id") === "risunok-main"
+            || link.getAttribute("id") === "svg-background";
+        if (isDownloadLink)
+            tip.classList.add("link-tip--download");
         tip.innerHTML = text;
         if (stickyToCursor) link.style.position = "fixed";
         document.addEventListener("click", onMouseleave);
@@ -106,13 +110,18 @@ function setLinks() {
             tip.remove();
         }
         function onMousemove(event) {
-
             if (stickyToCursor) {
                 tip.style.top = `${event.clientY - 50}px`;
                 tip.style.left = `${event.clientX}px`;
             } else {
+                const linkHalf = tip.offsetWidth / 2;
+                const targ = event.currentTarget;
                 tip.style.top = `${event.clientY - 50}px`;
-                tip.style.left = `${getCoords(event.currentTarget).right - tip.offsetWidth}px`;
+                tip.style.left = `${getCoords(targ).left + targ.getBoundingClientRect().width / 2 - linkHalf}px`;
+                if (isDownloadLink) {
+                    const bg = document.querySelector("#svg-background");
+                    tip.style.left = `${getCoords(bg).left + bg.getBoundingClientRect().width / 2 - linkHalf}px`;
+                }
             }
         }
     }
