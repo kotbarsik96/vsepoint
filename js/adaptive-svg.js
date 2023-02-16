@@ -19,6 +19,7 @@ async function adaptOnResize() {
     clear();
     setTimeout(() => {
         clear();
+        console.log(currentResolution);
         document.dispatchEvent(new CustomEvent("adapted"));
     }, 0);
 
