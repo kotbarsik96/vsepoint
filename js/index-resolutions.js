@@ -5,7 +5,8 @@ const resolutions = [
     "853x683",
     "1024x614",
     "1024x819",
-    "1152x782",
+    "1152x647",
+    "1152x872",
     "1280x768",
     "1280x1024",
     "1320x743",
@@ -20,9 +21,6 @@ document.addEventListener("adapted", () => {
 window.addEventListener("resize", adaptBackground);
 
 const mobileMedia = window.matchMedia("(max-width: 447px)");
-
-const background = document.querySelector(".background"),
-    backgroundLeftTopCorner = document.querySelector(".background__left-top-corner");
 
 function adaptBackground() {
     const url = `sizes/${currentResolution}.svg`;
@@ -81,7 +79,7 @@ function setLinks() {
 
     risunokMain.forEach(link => {
         if (!link) return;
-        initHover(link, "Нажмите мышкой, чтобы скачать", true);
+        initHover(link, "Нажмите мышкой, чтобы скачать");
     });
 
     function routeTo(path) {
@@ -91,7 +89,6 @@ function setLinks() {
         link.click();
     }
     function initHover(link, text, stickyToCursor = false) {
-        const wrapper = document.querySelector(".wrapper");
         link.addEventListener("mouseover", onMouseover);
         link.addEventListener("mouseleave", onMouseleave);
         const tip = document.createElement("div");
@@ -109,12 +106,13 @@ function setLinks() {
             tip.remove();
         }
         function onMousemove(event) {
+
             if (stickyToCursor) {
                 tip.style.top = `${event.clientY - 50}px`;
                 tip.style.left = `${event.clientX}px`;
             } else {
                 tip.style.top = `${event.clientY - 50}px`;
-                tip.style.left = `${getCoords(event.currentTarget).left}px`;
+                tip.style.left = `${getCoords(event.currentTarget).right - tip.offsetWidth}px`;
             }
         }
     }
