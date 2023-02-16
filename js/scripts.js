@@ -28,7 +28,7 @@ function browsersFix() {
         addMozfixClass = addMozfixClass
             .concat(Array.from(document.querySelectorAll(".header__mobile-signup.button")));
         addMozfixClass = addMozfixClass
-            .concat(Array.from(document.querySelectorAll(".header__button.link")));
+            .concat(Array.from(document.querySelectorAll(".header__button")));
 
         addMozfixClass.forEach(el => {
             el.classList.add("__moz-fix");

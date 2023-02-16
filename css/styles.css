@@ -170,11 +170,11 @@ body {
 }
 
 .header__bottom .header__button.link {
-  transform: translate(0, -1px);
+  transform: translate(0, -2px);
 }
 
 .header__bottom .header__button.link.__moz-fix {
-  transform: translate(0, -2px);
+  transform: translate(0, -1px);
 }
 
 .header__container {
@@ -631,11 +631,11 @@ body {
 /* BROWSERS FIXES */
 
 .button.__moz-fix {
-  padding-bottom: 4px;
+  padding-top: 1px;
 }
 
 .button {
-  padding-bottom: 3px;
+  box-sizing: border-box;
 }
 
 /* BROWSERS FIXES */
