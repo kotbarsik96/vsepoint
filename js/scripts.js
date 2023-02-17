@@ -11,6 +11,15 @@ function getBrowser() {
 
     return browser;
 }
+function isMobileBrowser() {
+    let isMobile = false;
+    const userAgent = navigator.userAgent;
+    const mobilesRegExp =
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i
+    if (mobilesRegExp.test(userAgent)) isMobile = true;
+
+    return isMobile;
+}
 const browser = getBrowser();
 
 function browsersFix() {
@@ -28,7 +37,7 @@ function browsersFix() {
         addMozfixClass = addMozfixClass
             .concat(Array.from(document.querySelectorAll(".header__mobile-signup.button")));
         addMozfixClass = addMozfixClass
-            .concat(Array.from(document.querySelectorAll(".header__button")));
+            .concat(Array.from(document.querySelectorAll(".button")));
 
         addMozfixClass.forEach(el => {
             el.classList.add("__moz-fix");

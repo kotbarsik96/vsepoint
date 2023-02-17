@@ -42,20 +42,9 @@
         }
 
         .wrapper__svg>svg {
-            background: #fff;
             position: absolute;
             z-index: 15;
-            max-height: unset;
-        }
-
-        @media (max-width: 992px) {
-            .header {
-                height: 60px;
-            }
-
-            .wrapper__svg>svg {
-                align-self: flex-start;
-            }
+            max-height: 100%;
         }
 
         #monday,
@@ -71,13 +60,13 @@
             cursor: pointer;
         }
 
-        @media (max-width: 447px) {
-            .background {
-                display: none;
+        @media (max-width: 992px) {
+            .header {
+                height: 60px;
             }
 
-            body {
-                background: #fff;
+            .wrapper__svg>svg {
+                align-self: flex-start;
             }
         }
     </style>
@@ -426,7 +415,6 @@
 
     <script src="/vsepoint/js/scripts.js"></script>
     <script src="/vsepoint/js/index-resolutions.js"></script>
-    <script src="/vsepoint/js/adaptive-svg.js"></script>
 </body>
 
 </html>

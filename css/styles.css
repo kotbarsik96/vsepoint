@@ -170,7 +170,7 @@ body {
 }
 
 .header__bottom .header__button.link {
-  transform: translate(0, -2px);
+  transform: translate(0, -1px);
 }
 
 .header__bottom .header__button.link.__moz-fix {
@@ -500,15 +500,19 @@ body {
   border: 1px solid var(--button_background_color);
   color: var(--button_text_color);
   background-color: var(--button_background_color);
-  padding: 0px 12px 3px 12px;
+  padding: 0px 12px 2px 12px;
   border-radius: 2px;
-  min-height: 38px;
+  min-height: 39px;
   font-size: 16px;
   display: inline-block;
   transition-property: color, background, border;
   transition-duration: .5s;
   display: inline-flex;
   align-items: center;
+}
+
+.button.__moz-fix {
+  padding: 0px 12px 4px 12px;
 }
 
 .button:hover,

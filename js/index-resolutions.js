@@ -1,29 +1,122 @@
-const resolutions = [
-    "414x736",
-    "480x360",
-    "800x600",
-    "853x683",
-    "1024x614",
-    "1024x819",
-    "1152x647",
-    "1152x872",
-    "1280x768",
-    "1280x1024",
-    "1320x743",
-    "1584x891",
-    "1980x1114"
+const ratios = [
+    "1x1",
+    "2x1",
+    "4x3",
+    "5x4",
+    "16x9",
+    "16x10",
+    "19x10",
+    "21x9",
+    "25x16",
+    "64x27"
 ];
 
-document.addEventListener("adapted", () => {
-    adaptBackground();
-    setLinks();
-});
-window.addEventListener("resize", adaptBackground);
+function isMobileRatio() {
+    const windowWidth = document.documentElement.clientWidth || window.innerWidth;
+    const windowHeight = document.documentElement.clientHeight || window.innerHeight;
 
-const mobileMedia = window.matchMedia("(max-width: 447px)");
+    return windowWidth < windowHeight;
+}
+function findLeastClosestDivisor(num1, num2) {
+    num1 = parseInt(num1);
+    num2 = parseInt(num2);
+    const leastNum = Math.min(num1, num2);
+    let value = leastNum;
+    while (num1 % value !== 0 || num2 % value !== 0) value--;
 
+    if (value === 1) value = leastNum;
+
+    return value;
+}
+
+function onResize() {
+    doAdapt();
+}
+
+let currentRatio = null;
+async function doAdapt(event) {
+    const wrapperSvg = document.querySelector(".wrapper__svg");
+
+    const wWidth = document.documentElement.clientWidth || window.innerWidth;
+    const wHeight = document.documentElement.clientHeight || window.innerHeight;
+    const divisor = findLeastClosestDivisor(wWidth, wHeight);
+    const ratio = findClosestRatio(wWidth, wHeight, divisor);
+
+    if (ratio === currentRatio) {
+        adaptBackground();
+        return;
+    };
+
+    // mobile ratio
+    if (isMobileRatio()) {
+        const response = await fetch("sizes/mobile.svg");
+        const layout = await response.text();
+        doLayout(layout);
+        document.body.style.background = "#fff";
+        toggleMaxHeight();
+    }
+    // mobile browser и 1x1 соотношение
+    else if(isMobileBrowser() && ratio === "1x1") {
+        const response = await fetch("sizes/mobile-1x1.svg");
+        const layout = await response.text();
+        currentRatio = ratio;
+        doLayout(layout);
+        document.body.style.removeProperty("background");
+        toggleMaxHeight();
+    }
+    // desktop ratio
+    else {
+        const response = await fetch(`sizes/${ratio}.svg`);
+        const layout = await response.text();
+        currentRatio = ratio;
+        doLayout(layout);
+        document.body.style.removeProperty("background");
+        toggleMaxHeight();
+    }
+
+    function doLayout(layout) {
+        wrapperSvg.innerHTML = "";
+        wrapperSvg.insertAdjacentHTML("afterbegin", layout);
+        setLinks();
+        adaptBackground();
+    }
+    function toggleMaxHeight() {
+        if (isMobileBrowser() || isMobileRatio()) {
+            const headerHeight = document.querySelector(".header").offsetHeight;
+            const value = window.matchMedia("(max-width: 447px)").matches   
+                ? -20
+                : 20;
+            document.querySelector(".wrapper__svg > svg").style.maxHeight = `calc(90vh - ${headerHeight + value}px)`;
+        } else {
+            document.querySelector(".wrapper__svg > svg").style.removeProperty("max-height");
+        }
+    }
+}
+function findClosestRatio(wWidth, wHeight, divisor) {
+    let width = parseInt(wWidth / divisor);
+    let height = parseInt(wHeight / divisor);
+
+    const otherValues = ratios.map(val => {
+        const nums = val.split("x");
+        return parseInt(nums[0]) / parseInt(nums[1]);
+    });
+    const value = width / height;
+    const closest = [...otherValues].sort((val1, val2) => {
+        const res1 = Math.abs(value - val1);
+        const res2 = Math.abs(value - val2);
+        if (res1 < res2) return -1;
+        if (res1 > res2) return 1;
+        return 0;
+    })[0];
+    const ratioIndex = otherValues.indexOf(closest);
+    const ratio = ratios[ratioIndex];
+
+    return ratio;
+}
 function adaptBackground() {
-    const url = `sizes/${currentResolution}.svg`;
+    if (isMobileRatio()) return;
+
+    const url = `sizes/${currentRatio}.svg`;
     const img = new Image();
     img.onload = () => {
         const svg = document.querySelector(".wrapper__svg > svg");
@@ -39,7 +132,6 @@ function adaptBackground() {
     };
     img.src = url;
 }
-
 function setLinks() {
     const mondays = [document.querySelector("#monday-link")],
         tuesdays = [document.querySelector("#tuesday-link")],
@@ -126,3 +218,6 @@ function setLinks() {
         }
     }
 }
+
+doAdapt();
+window.addEventListener("resize", doAdapt);
