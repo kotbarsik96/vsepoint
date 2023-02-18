@@ -61,8 +61,8 @@ async function doAdapt() {
         toggleMaxHeight();
     }
     // mobile browser и 1x1 соотношение
-    else if(isMobileBrowser() && ratio === "1x1") {
-        const response = await fetch("sizes/mobile-1x1.svg");
+    else if(isMobileBrowser()) {
+        const response = await fetch(`sizes/mobile-${ratio}.svg`);
         const layout = await response.text();
         currentRatio = ratio;
         doLayout(layout);
