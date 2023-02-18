@@ -1,8 +1,11 @@
 const ratios = [
-    "1x1",
+    "10x10",
     "2x1",
     "4x3",
     "5x4",
+    "11x10",
+    "12x10",
+    "13x10",
     "16x9",
     "16x10",
     "19x10",
@@ -34,7 +37,7 @@ function onResize() {
 }
 
 let currentRatio = null;
-async function doAdapt(event) {
+async function doAdapt() {
     const wrapperSvg = document.querySelector(".wrapper__svg");
 
     const wWidth = document.documentElement.clientWidth || window.innerWidth;
@@ -42,13 +45,15 @@ async function doAdapt(event) {
     const divisor = findLeastClosestDivisor(wWidth, wHeight);
     const ratio = findClosestRatio(wWidth, wHeight, divisor);
 
-    if (ratio === currentRatio) {
+    const isMobileR = isMobileRatio();
+
+    if (ratio === currentRatio && !isMobileR) {
         adaptBackground();
         return;
     };
 
     // mobile ratio
-    if (isMobileRatio()) {
+    if (isMobileR) {
         const response = await fetch("sizes/mobile.svg");
         const layout = await response.text();
         doLayout(layout);
@@ -110,6 +115,8 @@ function findClosestRatio(wWidth, wHeight, divisor) {
     })[0];
     const ratioIndex = otherValues.indexOf(closest);
     const ratio = ratios[ratioIndex];
+
+    console.log(ratio);
 
     return ratio;
 }
