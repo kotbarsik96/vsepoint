@@ -38,7 +38,7 @@ async function doAdapt() {
         document.body.style.background = "#fff";
         toggleMaxHeight();
     }
-    // mobile browser и 1x1 соотношение
+    // mobile browser
     else if(isMobileBrowser()) {
         const response = await fetch(`sizes/mobile-${ratio}.svg`);
         const layout = await response.text();
@@ -66,10 +66,8 @@ async function doAdapt() {
     function toggleMaxHeight() {
         if (isMobileBrowser() || isMobileRatio()) {
             const headerHeight = document.querySelector(".header").offsetHeight;
-            const value = window.matchMedia("(max-width: 447px)").matches   
-                ? -20
-                : 20;
-            document.querySelector(".wrapper__svg > svg").style.maxHeight = `calc(90vh - ${headerHeight + value}px)`;
+            const wHeight = document.documentElement.offsetHeight || window.innerHeight;
+            document.querySelector(".wrapper__svg > svg").style.maxHeight = `calc(100vh - ${headerHeight}px - ${wHeight * 0.16}px)`;
         } else {
             document.querySelector(".wrapper__svg > svg").style.removeProperty("max-height");
         }
@@ -107,10 +105,11 @@ function adaptBackground() {
         img.style.cssText = "position: absolute; z-index: -999; top: -100vh;";
         document.body.append(img);
         const ratio = img.width / img.height;
-        const height = svgContainer.offsetHeight - document.querySelector(".header").offsetHeight;
+        const height = svgContainer.offsetHeight;
         const width = ratio * height;
         svg.style.height = `${height}px`;
         svg.style.width = `${width}px`;
+
         img.remove();
     };
     img.src = url;

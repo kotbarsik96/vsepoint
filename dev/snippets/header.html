@@ -21,51 +21,51 @@
     <div class="header__top">
         <div class="header__container">
             <nav class="header__nav">
-                <ul class="header-nav header-nav--main" data-dynamic-adaptive="1119, #header-menu-mobile-nav">
-                    <li class="header-nav__item">
+                <ul class="header-nav header-nav--main">
+                    <li class="header-nav__item" data-dynamic-adaptive="720, #header-nav__item-1">
                         <a href="#" class="header-nav__link link">
                             <span class="header-nav__icon glyphicon glyphicon-folder-open"></span>
                             Архив
                         </a>
                     </li>
-                    <li class="header-nav__item">
+                    <li class="header-nav__item" data-dynamic-adaptive="720, #header-nav__item-2">
                         <a href="#" class="header-nav__link link">
                             <span class="header-nav__icon glyphicon g5 glyphicon-bookmark"></span>
                             Контакты
                         </a>
                     </li>
-                    <li class="header-nav__item">
+                    <li class="header-nav__item" data-dynamic-adaptive="720, #header-nav__item-3">
                         <a href="#" class="header-nav__link link">
                             <span class="header-nav__icon glyphicon glyphicon-heart"></span>
                             Лучший работодатель
                         </a>
                     </li>
-                    <li class="header-nav__item">
+                    <li class="header-nav__item" data-dynamic-adaptive="779, #header-nav__item-4">
                         <a href="#" class="header-nav__link link">
                             <span class="header-nav__icon glyphicon g5 glyphicon-send"></span>
                             Подписаться
                         </a>
                     </li>
-                    <li class="header-nav__item">
+                    <li class="header-nav__item" data-dynamic-adaptive="899, #header-nav__item-5">
                         <a href="#" class="header-nav__link link">
                             <span class="header-nav__icon glyphicon g5 glyphicon-rub"></span>
                             Прайс лист
                         </a>
                     </li>
-                    <li class="header-nav__item">
+                    <li class="header-nav__item" data-dynamic-adaptive="1159, #header-nav__item-6">
                         <a href="#" class="header-nav__link link">
                             <span class="header-nav__icon glyphicon g5 glyphicon-star-empty"></span>
                             Свежий номер
                         </a>
                     </li>
-                    <li class="header-nav__item">
+                    <li class="header-nav__item" data-dynamic-adaptive="1329, #header-nav__item-7">
                         <a href="#" class="header-nav__link link">
                             <span class="header-nav__icon glyphicon g5 glyphicon-map-marker"></span>
                             Места распространения
                         </a>
                     </li>
                 </ul>
-                <ul class="header-nav header-nav--auth" data-dynamic-adaptive="1359, #header-menu-auth">
+                <ul class="header-nav header-nav--auth" data-dynamic-adaptive="720, #header-nav--auth">
                     <li class="header-nav__item">
                         <a href="#" class="header-nav__link link">
                             <span class="header-nav__icon icon-sign-up"></span>
@@ -87,7 +87,7 @@
             <div class="header__logo">
                 <img src="/vsepoint/image/logo.svg" data-fullsize-image alt="Все Вакансии Нижнего">
             </div>
-            <ul class="header__buttons" data-dynamic-adaptive="992, #header-menu-mobile-nav-extra">
+            <ul class="header__buttons">
                 <li class="header__button-item">
                     <a href="#" class="header__button button button--transparent">
                         <span class="header-nav__icon icon-layout"></span>
@@ -106,19 +106,19 @@
                         Наши преимущества
                     </a>
                 </li>
-                <li class="header__button-item">
+                <li class="header__button-item" data-dynamic-adaptive="819, #header-nav__item-extra-4">
                     <a href="#" class="header__button link">
                         <span class="header-nav__icon icon-megaphone" style="left: 3px; font-size: 15px"></span>
                         Подать объявление
                     </a>
                 </li>
-                <li class="header__button-item">
+                <li class="header__button-item" data-dynamic-adaptive="909, #header-nav__item-extra-5">
                     <a href="#" class="header__button link">
                         <span class="header-nav__icon icon-articles" style="font-size: 16px;"></span>
                         Статьи
                     </a>
                 </li>
-                <li class="header__button-item">
+                <li class="header__button-item" data-dynamic-adaptive="989, #header-nav__item-extra-6">
                     <a href="#" class="header__button link">
                         <span class="header-nav__icon icon-applicant"></span>
                         Соискатель с открытыми контактами
@@ -130,7 +130,7 @@
                 <span class="menu-button__item"></span>
                 <span class="menu-button__item"></span>
             </button>
-            <div class="header-menu" data-dynamic-adaptive="992, #header-menu-mobile">
+            <div class="header-menu" data-dynamic-adaptive="720, #header-menu-mobile">
                 <div class="header-menu__wrapper">
                     <div class="header-menu__block header-menu__profile">
                         <div class="header-menu__profile-logo">
@@ -151,8 +151,16 @@
                         </div>
                     </div>
                     <nav class="header-menu__block header-menu__nav">
-                        <div id="header-menu-auth"></div>
-                        <div id="header-menu-mobile-nav"></div>
+                        <ul id="header-nav--auth"></ul>
+                        <ul class="header-nav">
+                            <li id="header-nav__item-1"></li>
+                            <li id="header-nav__item-2"></li>
+                            <li id="header-nav__item-3"></li>
+                            <li id="header-nav__item-4"></li>
+                            <li id="header-nav__item-5"></li>
+                            <li id="header-nav__item-6"></li>
+                            <li id="header-nav__item-7"></li>
+                        </ul>
                     </nav>
                     <div class="header-menu__block">
                         <ul class="header-nav">
@@ -287,8 +295,13 @@
                                     Помощь
                                 </a>
                             </li>
+                            <li id="header-nav__item-extra-1"></li>
+                            <li id="header-nav__item-extra-2"></li>
+                            <li id="header-nav__item-extra-3"></li>
+                            <li id="header-nav__item-extra-4"></li>
+                            <li id="header-nav__item-extra-5"></li>
+                            <li id="header-nav__item-extra-6"></li>
                         </ul>
-                        <div id="header-menu-mobile-nav-extra"></div>
                     </div>
                     <div class="header-menu__block header-menu__exit">
                         <button class="header-menu__exit-link link" type="button">

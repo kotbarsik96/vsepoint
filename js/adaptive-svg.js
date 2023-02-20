@@ -1,3 +1,16 @@
+const ratios = [
+    "16x9", // 1.7778
+    "16x10", // 1.6
+    "2x1", // 2
+    "3x1", // 3
+    "22x10", // 2.2
+    "23x10", // 2.3
+    "25x10", // 2.5
+    "27x10", // 2.7
+    "10x10", // 1
+    "14x10" // 1.4
+];
+
 let currentRatio = null;
 
 async function doAdapt() {
@@ -19,14 +32,16 @@ async function doAdapt() {
         doLayout(layout);
         toggleMaxHeight();
     }
-    // mobile browser и 1x1 соотношение
-    // else if (isMobileBrowser()) {
-    //     const response = await fetch(`sizes/mobile-${ratio}.svg`);
-    //     const layout = await response.text();
-    //     currentRatio = ratio;
-    //     doLayout(layout);
-    //     toggleMaxHeight();
-    // }
+    // mobile browser
+    else if(isMobileBrowser() || window.matchMedia("(max-width: 719px)").matches) {
+        let response = await fetch(`sizes/mobile-${ratio}.svg`);
+        if(response.status > 200) response = await fetch(`sizes/${ratio}.svg`);
+        const layout = await response.text();
+        
+        currentRatio = ratio;
+        doLayout(layout);
+        toggleMaxHeight();
+    }
     // desktop ratio
     else {
         const response = await fetch(`sizes/${ratio}.svg`);
@@ -43,9 +58,7 @@ async function doAdapt() {
     function toggleMaxHeight() {
         if (isMobileBrowser() || isMobileRatio()) {
             const headerHeight = document.querySelector(".header").offsetHeight;
-            const value = window.matchMedia("(max-width: 447px)").matches
-                ? 0
-                : 60;
+            const value = 60;
             document.querySelector(".wrapper__svg > svg").style.maxHeight = `calc(100vh - ${headerHeight + value}px)`;
         } else {
             document.querySelector(".wrapper__svg > svg").style.removeProperty("max-height");
