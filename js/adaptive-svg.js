@@ -1,68 +1,81 @@
-let currentResolution = null;
+let currentRatio = null;
 
-async function adaptOnResize() {
+async function doAdapt() {
     const wrapperSvg = document.querySelector(".wrapper__svg");
-    const svg = document.querySelector(".wrapper__svg > svg");
 
-    const windowWidth = document.documentElement.clientWidth || window.innerWidth;
-    const windowHeight = document.documentElement.clientHeight || window.innerHeight;
+    const wWidth = document.documentElement.clientWidth || window.innerWidth;
+    const wHeight = document.documentElement.clientHeight || window.innerHeight;
+    const divisor = findLeastClosestDivisor(wWidth, wHeight);
+    const ratio = findClosestRatio(wWidth, wHeight, divisor);
 
-    const closestResolution = findClosestResolution(windowWidth, windowHeight);
-    if (!closestResolution || closestResolution === currentResolution) return;
+    const isMobileR = isMobileRatio();
 
-    const request = await fetch(`sizes/${closestResolution}.svg`);
-    const layout = await request.text();
-    currentResolution = closestResolution;
+    if (ratio === currentRatio && !isMobileR) return;
 
-    if (svg) svg.remove();
-    wrapperSvg.insertAdjacentHTML("afterbegin", layout);
-    clear();
-    setTimeout(() => {
-        clear();
-        document.dispatchEvent(new CustomEvent("adapted"));
-    }, 0);
+    // mobile ratio
+    if (isMobileR) {
+        const response = await fetch("sizes/mobile.svg");
+        const layout = await response.text();
+        doLayout(layout);
+        toggleMaxHeight();
+    }
+    // mobile browser и 1x1 соотношение
+    // else if (isMobileBrowser()) {
+    //     const response = await fetch(`sizes/mobile-${ratio}.svg`);
+    //     const layout = await response.text();
+    //     currentRatio = ratio;
+    //     doLayout(layout);
+    //     toggleMaxHeight();
+    // }
+    // desktop ratio
+    else {
+        const response = await fetch(`sizes/${ratio}.svg`);
+        const layout = await response.text();
+        currentRatio = ratio;
+        doLayout(layout);
+        toggleMaxHeight();
+    }
 
-    function clear() {
-        const svgChildren = document.querySelectorAll(".wrapper__svg > svg");
-        if (svgChildren.length > 1) {
-            svgChildren[0].remove();
+    function doLayout(layout) {
+        wrapperSvg.innerHTML = "";
+        wrapperSvg.insertAdjacentHTML("afterbegin", layout);
+    }
+    function toggleMaxHeight() {
+        if (isMobileBrowser() || isMobileRatio()) {
+            const headerHeight = document.querySelector(".header").offsetHeight;
+            const value = window.matchMedia("(max-width: 447px)").matches
+                ? 0
+                : 60;
+            document.querySelector(".wrapper__svg > svg").style.maxHeight = `calc(100vh - ${headerHeight + value}px)`;
+        } else {
+            document.querySelector(".wrapper__svg > svg").style.removeProperty("max-height");
         }
     }
 }
-function findClosestResolution(wWidth, wHeight) {
-    const widths = resolutions.map(res => res.split("x")[0]);
-    const heights = resolutions.map(res => res.split("x")[1]);
+function findClosestRatio(wWidth, wHeight, divisor) {
 
-    let closestWidth = widths.sort((w1, w2) => {
-        w1 = parseInt(w1);
-        w2 = parseInt(w2);
+    let width = parseFloat(wWidth / divisor);
+    let height = parseFloat(wHeight / divisor);
 
-        const res1 = Math.abs(wWidth - w1);
-        const res2 = Math.abs(wWidth - w2);
+    const otherValues = ratios.map(val => {
+        const nums = val.split("x");
+        return parseInt(nums[0]) / parseInt(nums[1]);
+    });
+    const value = width / height;
+    const closest = [...otherValues].sort((val1, val2) => {
+        const res1 = Math.abs(value - val1);
+        const res2 = Math.abs(value - val2);
         if (res1 < res2) return -1;
         if (res1 > res2) return 1;
         return 0;
     })[0];
-    let closestHeight = heights.sort((h1, h2) => {
-        h1 = parseInt(h1);
-        h2 = parseInt(h2);
+    const ratioIndex = otherValues.indexOf(closest);
+    const ratio = ratios[ratioIndex];
 
-        const res1 = Math.abs(wHeight - h1);
-        const res2 = Math.abs(wHeight - h2);
-        if (res1 < res2) return -1;
-        if (res1 > res2) return 1;
-        return 0;
-    })[0];
-
-    closestWidth = closestWidth.toString();
-    closestHeight = closestHeight.toString();
-    let closestByFullmatch = resolutions
-        .filter(res => res.startsWith(closestWidth))
-        .find(res => res.split("x")[1].includes(closestHeight));
-    let closestByWidthMatch = resolutions.find(res => res.startsWith(closestWidth));
-
-    return closestByFullmatch ? closestByFullmatch : closestByWidthMatch;
+    console.log(ratio);
+    
+    return ratio;
 }
 
-adaptOnResize();
-window.addEventListener("resize", adaptOnResize);
+doAdapt();
+window.addEventListener("resize", doAdapt);

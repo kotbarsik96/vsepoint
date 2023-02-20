@@ -59,6 +59,7 @@ body {
   z-index: 100;
   align-self: flex-start;
   max-height: calc(100vh - 100px);
+  margin-top: 5px;
 }
 
 #layer_1 {
@@ -816,7 +817,7 @@ body {
   }
 
   .wrapper__svg>svg {
-    max-height: calc(90vh - 70px);
+    max-height: calc(90vh - 60px);
   }
 }
 
@@ -844,7 +845,7 @@ body {
 
 @media (max-width: 445px) {
   .wrapper__svg>svg {
-    max-height: calc(90vh - 20px);
+    max-height: calc(100vh - 60px);
   }
 }
 

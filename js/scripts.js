@@ -46,6 +46,24 @@ function browsersFix() {
 }
 browsersFix();
 
+function isMobileRatio() {
+    const windowWidth = document.documentElement.clientWidth || window.innerWidth;
+    const windowHeight = document.documentElement.clientHeight || window.innerHeight;
+
+    return windowWidth < windowHeight;
+}
+function findLeastClosestDivisor(num1, num2) {
+    num1 = parseInt(num1);
+    num2 = parseInt(num2);
+    const leastNum = Math.min(num1, num2);
+    let value = leastNum;
+    while (num1 % value !== 0 || num2 % value !== 0) value--;
+
+    if (value === 1) value = leastNum;
+
+    return value;
+}
+
 function getCoords(el) {
     const box = el.getBoundingClientRect();
 
