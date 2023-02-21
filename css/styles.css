@@ -41,6 +41,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 200;
 }
 
 .wrapper {
@@ -66,7 +67,7 @@ body {
   width: 100%;
   z-index: 100;
   align-self: flex-start;
-  max-height: calc(100vh - 120px);
+  max-height: calc(100vh - 110px);
 }
 
 #layer_1 {
@@ -81,10 +82,6 @@ body {
 #l_b {
   left: 55px;
   position: absolute;
-}
-
-.page-arrow {
-  z-index: 300;
 }
 
 .page-arrow>svg {
@@ -336,7 +333,7 @@ body {
   right: 0;
   background: #fff;
   color: #000;
-  z-index: 400;
+  z-index: 700;
   overflow: auto;
   max-height: calc(90vh - 100px);
   font-size: 18px;

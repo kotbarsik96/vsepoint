@@ -1,14 +1,9 @@
 const ratios = [
-    "16x9", // 1.7778
+    "14x10", // 1.4
     "16x10", // 1.6
+    "16x9", // 1.7778
     "2x1", // 2
-    "3x1", // 3
     "22x10", // 2.2
-    "23x10", // 2.3
-    "25x10", // 2.5
-    "27x10", // 2.7
-    "10x10", // 1
-    "14x10" // 1.4
 ];
 
 let currentRatio = null;
@@ -29,16 +24,6 @@ async function doAdapt() {
     if (isMobileR) {
         const response = await fetch("sizes/mobile.svg");
         const layout = await response.text();
-        doLayout(layout);
-        toggleMaxHeight();
-    }
-    // mobile browser
-    else if(isMobileBrowser() || window.matchMedia("(max-width: 719px)").matches) {
-        let response = await fetch(`sizes/mobile-${ratio}.svg`);
-        if(response.status > 200) response = await fetch(`sizes/${ratio}.svg`);
-        const layout = await response.text();
-        
-        currentRatio = ratio;
         doLayout(layout);
         toggleMaxHeight();
     }
