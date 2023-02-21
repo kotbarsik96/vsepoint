@@ -295,4 +295,5 @@ const inittingInputsBodyObserver = new MutationObserver(() => {
 inittingInputsBodyObserver.observe(document.body, { childList: true, subtree: true });
 initInputs();
 
+alignArrowsVertically();
 window.addEventListener("resize", alignArrowsVertically);
