@@ -64,9 +64,8 @@ async function doAdapt() {
         adaptBackground();
     }
     function toggleMaxHeight() {
-        if (isMobileBrowser() || isMobileRatio()) {
+        if (isMobileBrowser()) {
             const headerHeight = document.querySelector(".header").offsetHeight;
-            const wHeight = document.documentElement.offsetHeight || window.innerHeight;
             document.querySelector(".wrapper__svg > svg").style.maxHeight = `calc(100vh - ${headerHeight}px - 55px)`;
         } else {
             document.querySelector(".wrapper__svg > svg").style.removeProperty("max-height");
