@@ -1,9 +1,12 @@
 const ratios = [
-    "14x10", // 1.4
-    "16x10", // 1.6
-    "16x9", // 1.7778
-    "2x1", // 2
-    "22x10", // 2.2
+    "320x480", 
+    "320x568",
+    "360x780",
+    "14x10",
+    "16x10",
+    "16x9",
+    "2x1",
+    "22x10",
 ];
 
 let currentRatio = null;
@@ -16,32 +19,21 @@ async function doAdapt() {
     const divisor = findLeastClosestDivisor(wWidth, wHeight);
     const ratio = findClosestRatio(wWidth, wHeight, divisor);
 
-    const isMobileR = isMobileRatio();
+    if (ratio === currentRatio) return;
 
-    if (ratio === currentRatio && !isMobileR) return;
-
-    // mobile ratio
-    if (isMobileR) {
-        const response = await fetch("sizes/mobile.svg");
-        const layout = await response.text();
-        doLayout(layout);
-        toggleMaxHeight();
-    }
     // desktop ratio
-    else {
-        const response = await fetch(`sizes/${ratio}.svg`);
-        const layout = await response.text();
-        currentRatio = ratio;
-        doLayout(layout);
-        toggleMaxHeight();
-    }
+    const response = await fetch(`sizes/${ratio}.svg`);
+    const layout = await response.text();
+    currentRatio = ratio;
+    doLayout(layout);
+    toggleMaxHeight();
 
     function doLayout(layout) {
         wrapperSvg.innerHTML = "";
         wrapperSvg.insertAdjacentHTML("afterbegin", layout);
     }
     function toggleMaxHeight() {
-        if (isMobileBrowser() || isMobileRatio()) {
+        if (isMobileBrowser()) {
             const headerHeight = document.querySelector(".header").offsetHeight;
             const value = 60;
             document.querySelector(".wrapper__svg > svg").style.maxHeight = `calc(100vh - ${headerHeight + value}px)`;
@@ -71,9 +63,10 @@ function findClosestRatio(wWidth, wHeight, divisor) {
     const ratio = ratios[ratioIndex];
 
     console.log(ratio);
-    
+
     return ratio;
 }
 
 doAdapt();
+alignArrowsVertically();
 window.addEventListener("resize", doAdapt);

@@ -64,6 +64,13 @@ function findLeastClosestDivisor(num1, num2) {
     return value;
 }
 
+function alignArrowsVertically() {
+    const arrowLeft = document.querySelector("#l_b");
+    const arrowRight = document.querySelector("#r_b");
+
+    arrowLeft.style.transform = arrowRight.style.transform = "translate(0, -40%)";
+}
+
 function getCoords(el) {
     const box = el.getBoundingClientRect();
 
@@ -287,3 +294,5 @@ const inittingInputsBodyObserver = new MutationObserver(() => {
 });
 inittingInputsBodyObserver.observe(document.body, { childList: true, subtree: true });
 initInputs();
+
+window.addEventListener("resize", alignArrowsVertically);
