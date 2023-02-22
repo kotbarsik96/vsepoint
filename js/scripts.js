@@ -67,8 +67,10 @@ function findLeastClosestDivisor(num1, num2) {
 function alignArrowsVertically() {
     const arrowLeft = document.querySelector("#l_b");
     const arrowRight = document.querySelector("#r_b");
+    const media = window.matchMedia("(max-width: 520px)");
 
-    arrowLeft.style.transform = arrowRight.style.transform = "translate(0, -40%)";
+    if(media.matches) arrowLeft.style.transform = arrowRight.style.transform = "translate(0, -60%)";
+    else arrowLeft.style.transform = arrowRight.style.transform = "translate(0, -40%)";
 }
 
 function getCoords(el) {

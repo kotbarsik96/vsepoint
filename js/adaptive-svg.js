@@ -63,7 +63,6 @@ function findClosestRatio(wWidth, wHeight, divisor) {
     const ratio = ratios[ratioIndex];
 
     console.log(ratio);
-    // alert(`${window.innerWidth}x${window.innerHeight}`);
 
     return ratio;
 }
