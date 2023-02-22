@@ -3,10 +3,11 @@ const ratios = [
     "320x568",
     "360x780",
     "14x10",
-    "16x10",
+    // "16x10",
     "16x9",
     "2x1",
     "22x10",
+    "25x10"
 ];
 
 let currentRatio = null;
