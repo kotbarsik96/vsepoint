@@ -97,6 +97,7 @@ function adaptBackground() {
     if (isMobileRatio()) return;
 
     const url = `sizes/${currentRatio}.svg`;
+    alert(`${window.innerWidth}x${window.innerHeight}`);
     const img = new Image();
     img.onload = () => {
         const svg = document.querySelector(".wrapper__svg > svg");
