@@ -42,6 +42,7 @@ async function doAdapt() {
     else if(isMobileBrowser()) {
         const response = await fetch(`sizes/mobile-${ratio}.svg`);
         const layout = await response.text();
+        console.log(ratio);
         currentRatio = ratio;
         doLayout(layout);
         document.body.style.removeProperty("background");
@@ -97,7 +98,6 @@ function adaptBackground() {
     if (isMobileRatio()) return;
 
     const url = `sizes/${currentRatio}.svg`;
-    alert(`${window.innerWidth}x${window.innerHeight}`);
     const img = new Image();
     img.onload = () => {
         const svg = document.querySelector(".wrapper__svg > svg");
