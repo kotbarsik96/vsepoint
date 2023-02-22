@@ -33,12 +33,17 @@ async function doAdapt() {
         wrapperSvg.insertAdjacentHTML("afterbegin", layout);
     }
     function toggleMaxHeight() {
+        const wrapperSvg = document.querySelector(".wrapper__svg");
+        const svg = document.querySelector(".wrapper__svg > svg");
+
         if (isMobileBrowser()) {
             const headerHeight = document.querySelector(".header").offsetHeight;
             const value = 60;
-            document.querySelector(".wrapper__svg > svg").style.maxHeight = `calc(100vh - ${headerHeight + value}px)`;
+            svg.style.maxHeight = `calc(100vh - ${headerHeight + value}px)`;
+            wrapperSvg.style.alignSelf = "flex-start";
         } else {
-            document.querySelector(".wrapper__svg > svg").style.removeProperty("max-height");
+            svg.style.removeProperty("max-height");
+            wrapperSvg.style.alignSelf = "center";
         }
     }
 }
