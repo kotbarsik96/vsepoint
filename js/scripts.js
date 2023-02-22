@@ -69,7 +69,7 @@ function alignArrowsVertically() {
     const arrowRight = document.querySelector("#r_b");
     const media = window.matchMedia("(max-width: 520px)");
 
-    if(media.matches) arrowLeft.style.transform = arrowRight.style.transform = "translate(0, -60%)";
+    if(media.matches && isMobileRatio()) arrowLeft.style.transform = arrowRight.style.transform = "translate(0, -60%)";
     else arrowLeft.style.transform = arrowRight.style.transform = "translate(0, -40%)";
 }
 

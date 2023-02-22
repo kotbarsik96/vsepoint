@@ -78,6 +78,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-folder:before {
+  content: "\e91e";
+}
+
 .icon-search:before {
   content: "\e91d";
 }

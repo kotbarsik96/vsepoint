@@ -1,2 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-<svg width="800px" height="800px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path fill="#000000" d="M878.08 448H241.92l-96 384h636.16l96-384zM832 384v-64H485.76L357.504 192H128v448l57.92-231.744A32 32 0 0 1 216.96 384H832zm-24.96 512H96a32 32 0 0 1-32-32V160a32 32 0 0 1 32-32h287.872l128.384 128H864a32 32 0 0 1 32 32v96h23.04a32 32 0 0 1 31.04 39.744l-112 448A32 32 0 0 1 807.04 896z"/></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.4.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 800 800" style="enable-background:new 0 0 800 800;" xml:space="preserve">
+<style type="text/css">
+	.st0{stroke:#000000;stroke-miterlimit:10;}
+</style>
+<path d="M686,350H189l-75,300h497L686,350L686,350z M650,300v-50H379.5L279.3,150H100v350l45.2-181.1C148,307.8,158,300,169.5,300
+	H650z M630.5,700H75c-13.8,0-25-11.2-25-25V125c0-13.8,11.2-25,25-25h224.9l100.3,100H675c13.8,0,25,11.2,25,25v75h18
+	c13.8,0,25,11.2,25,25c0,2-0.3,4.1-0.7,6l-87.5,350C652,692.2,642,700,630.5,700z"/>
+<polygon class="st0" points="622.2,663.2 88.4,663.2 174.4,339.5 708.2,339.5 "/>
+</svg>
