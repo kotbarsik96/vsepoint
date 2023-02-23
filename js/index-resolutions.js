@@ -114,21 +114,25 @@ function adaptBackground() {
 
         img.remove();
 
+        const header = document.querySelector(".header");
         const headerContainers = document.querySelectorAll(".header__container");
         const wWidth = document.documentElement.clientWidth || window.innerWidth;
         const wHeight = document.documentElement.clientHeight || window.innerHeight;
         const mediaMatch = wWidth / wHeight > 1.59 && wWidth / wHeight < 2.3;
-        const leftPoint = getCoords(document.querySelector("#g29090")).left;
+        const leftPoint = getCoords(document.querySelector("#g29090")).right;
         const rightPoint = getCoords(document.querySelector("#monday-link")).right;
-        const maxHeaderContWidth = rightPoint - leftPoint;
-        console.log(mediaMatch, wWidth / wHeight);
+        let maxHeaderContWidth = rightPoint - leftPoint;
+        if(window.matchMedia("(min-width: 3000px)").matches) maxHeaderContWidth -= 100;
+        console.log(maxHeaderContWidth);
 
         if (mediaMatch && maxHeaderContWidth > 1500) {
+            header.classList.add("header--adapted");
             headerContainers.forEach(cont => {
                 cont.style.maxWidth = `${maxHeaderContWidth}px`;
                 cont.classList.add("header__container--adapted");
             });
         } else {
+            header.classList.remove("header--adapted");
             headerContainers.forEach(cont => {
                 cont.style.removeProperty("max-width");
                 cont.classList.remove("header__container--adapted");

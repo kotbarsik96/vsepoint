@@ -78,128 +78,136 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-folder:before {
-  content: "\e91e";
-}
-
-.icon-search:before {
-  content: "\e91d";
-}
-
-.icon-eye:before {
-  content: "\e912";
-}
-
-.icon-bell:before {
-  content: "\e91c";
-}
-
-.icon-star:before {
-  content: "\e91b";
-}
-
-.icon-user-search:before {
-  content: "\e908";
-}
-
-.icon-user-building:before {
-  content: "\e909";
-}
-
-.icon-thumb-up:before {
-  content: "\e90a";
-}
-
-.icon-lamp:before {
-  content: "\e90b";
-}
-
-.icon-house:before {
-  content: "\e90c";
-}
-
-.icon-heart:before {
-  content: "\e90d";
-}
-
-.icon-hand-heart:before {
-  content: "\e90e";
-}
-
-.icon-graph:before {
-  content: "\e90f";
-}
-
-.icon-gear:before {
-  content: "\e910";
-}
-
-.icon-flag:before {
-  content: "\e911";
-}
-
-.icon-euro:before {
+.icon-sign-up:before {
   content: "\e913";
 }
 
-.icon-desktop-mobile:before {
-  content: "\e914";
-}
-
-.icon-cup:before {
-  content: "\e915";
-}
-
 .icon-cash:before {
-  content: "\e916";
-}
-
-.icon-case:before {
-  content: "\e917";
-}
-
-.icon-calendar:before {
-  content: "\e918";
-}
-
-.icon-building:before {
-  content: "\e919";
-}
-
-.icon-banknote:before {
-  content: "\e91a";
-}
-
-.icon-layout:before {
-  content: "\e907";
-}
-
-.icon-sign-in:before {
-  content: "\e904";
-}
-
-.icon-sign-up:before {
-  content: "\e905";
-}
-
-.icon-advantages:before {
   content: "\e900";
 }
 
-.icon-applicant:before {
+.icon-chevron-left:before {
   content: "\e901";
 }
 
-.icon-articles:before {
+.icon-chevron-right:before {
   content: "\e902";
 }
 
-.icon-megaphone:before {
+.icon-cup:before {
   content: "\e903";
 }
 
-.icon-vacancies_resumes:before {
+.icon-desktop-mobile:before {
+  content: "\e904";
+}
+
+.icon-euro:before {
+  content: "\e905";
+}
+
+.icon-eye:before {
   content: "\e906";
+}
+
+.icon-flag:before {
+  content: "\e907";
+}
+
+.icon-folder:before {
+  content: "\e908";
+}
+
+.icon-gear:before {
+  content: "\e909";
+}
+
+.icon-graph:before {
+  content: "\e90a";
+}
+
+.icon-hand-heart:before {
+  content: "\e90b";
+}
+
+.icon-heart:before {
+  content: "\e90c";
+}
+
+.icon-house:before {
+  content: "\e90d";
+}
+
+.icon-lamp:before {
+  content: "\e90e";
+}
+
+.icon-layout:before {
+  content: "\e90f";
+}
+
+.icon-megaphone:before {
+  content: "\e910";
+}
+
+.icon-search:before {
+  content: "\e911";
+}
+
+.icon-sign-in:before {
+  content: "\e912";
+}
+
+.icon-star:before {
+  content: "\e914";
+}
+
+.icon-thumb-up:before {
+  content: "\e915";
+}
+
+.icon-user-building:before {
+  content: "\e916";
+}
+
+.icon-user-search:before {
+  content: "\e917";
+}
+
+.icon-vacancies_resumes:before {
+  content: "\e918";
+}
+
+.icon-advantages:before {
+  content: "\e919";
+}
+
+.icon-applicant:before {
+  content: "\e91a";
+}
+
+.icon-articles:before {
+  content: "\e91b";
+}
+
+.icon-banknote:before {
+  content: "\e91c";
+}
+
+.icon-bell:before {
+  content: "\e91d";
+}
+
+.icon-building:before {
+  content: "\e91e";
+}
+
+.icon-calendar:before {
+  content: "\e91f";
+}
+
+.icon-case:before {
+  content: "\e920";
 }
 
 /* ICOMOON - end */
