@@ -123,9 +123,9 @@ function adaptBackground() {
         const rightPoint = getCoords(document.querySelector("#monday-link")).right;
         let maxHeaderContWidth = rightPoint - leftPoint;
         if(window.matchMedia("(min-width: 3000px)").matches) maxHeaderContWidth -= 100;
-        console.log(maxHeaderContWidth);
 
-        if (mediaMatch && maxHeaderContWidth > 1500) {
+        if ((mediaMatch && maxHeaderContWidth > 1500)) {
+            console.log(maxHeaderContWidth);
             header.classList.add("header--adapted");
             headerContainers.forEach(cont => {
                 cont.style.maxWidth = `${maxHeaderContWidth}px`;

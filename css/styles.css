@@ -198,7 +198,7 @@ body {
 }
 
 .header__container--adapted .header__button {
-  font-size: 23px;
+  font-size: 22px;
 }
 
 .header__container--adapted .header-nav__link .header-nav__icon,
@@ -678,7 +678,37 @@ body {
   }
 }
 
-@media (min-width: 3000px) and (min-height: 1500px) {
+@media (min-width: 1930px) {
+  .header__container {
+    font-size: 25px;
+    max-width: 1920px;
+  }
+
+  .button,
+  .button.__moz-fix {
+    border-width: 2px;
+    padding-top: 0;
+  }
+
+  .header__bottom .header__button {
+    font-size: 22px;
+  }
+
+  .header-nav__link .header-nav__icon,
+  .header__button .header-nav__icon {
+    font-size: 23px;
+    left: 4px;
+  }
+}
+
+@media (min-width: 2400px) {
+  .menu-button {
+    width: 42px;
+    height: 27px;
+  }
+}
+
+@media (min-width: 3000px) and (device-aspect-ratio: 16/9) {
   .header--adapted .header__top {
     height: 4.5vh;
   }
@@ -703,6 +733,55 @@ body {
   .header__container--adapted .header-nav__link .header-nav__icon,
   .header__container--adapted .header__button .header-nav__icon {
     font-size: 1.75vh !important;
+    transform: translate(0, -10px) !important;
+    left: 4px !important;
+  }
+
+  .header__container--adapted .header-nav__link:not(.button) .header-nav__icon,
+  .header__container--adapted .header__button:not(.button) .header-nav__icon {
+    left: 0px !important;
+  }
+
+  .header__button {
+    padding-bottom: 7px !important;
+  }
+
+  .header__button:not(.button) {
+    padding-bottom: 13px !important;
+  }
+
+  .button,
+  .header__button {
+    border-width: 2px;
+    min-height: 70px;
+  }
+}
+
+@media (min-width: 3000px) and (min-height: 2000px) {
+  .header--adapted .header__top {
+    height: 4.5vh;
+  }
+
+  .header--adapted .header__bottom {
+    height: 4.5vh;
+  }
+
+  .header__container--adapted {
+    font-size: 1.6vh;
+  }
+
+  .header__container--adapted .header__button {
+    font-size: 1.6vh;
+  }
+
+  .header__container--adapted .header-nav__link,
+  .header__button {
+    padding-left: 50px !important;
+  }
+
+  .header__container--adapted .header-nav__link .header-nav__icon,
+  .header__container--adapted .header__button .header-nav__icon {
+    font-size: 1.6vh !important;
     transform: translate(0, -10px) !important;
     left: 4px !important;
   }
