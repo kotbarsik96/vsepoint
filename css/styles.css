@@ -679,6 +679,30 @@ body {
   cursor: pointer;
 }
 
+@media (min-width: 320px) and (min-height: 568px) {
+  .wrapper__svg > svg {
+    margin-top: 2px;
+  }
+}
+
+@media (min-width: 360px) and (min-height: 780px) {
+  .wrapper__svg > svg {
+    margin-top: 20px;
+  }
+}
+
+@media (min-width: 375px) and (min-height: 812px) {
+  .wrapper__svg > svg {
+    margin-top: 20px;
+  }
+}
+
+@media (min-width: 447px) {
+  .wrapper__svg > svg {
+    margin-top: 0;
+  }
+}
+
 @media (min-width: 1330px) {
   .header-menu__nav {
     display: none;
