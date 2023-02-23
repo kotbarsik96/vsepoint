@@ -187,6 +187,20 @@ body {
   position: relative;
 }
 
+.header__container--adapted {
+  font-size: 25px;
+}
+
+.header__container--adapted .header__button {
+  font-size: 23px;
+}
+
+.header__container--adapted .header-nav__link .header-nav__icon,
+.header__container--adapted .header__button .header-nav__icon {
+  font-size: 23px;
+  left: 4px;
+}
+
 .header__nav,
 .header-nav {
   height: 100%;

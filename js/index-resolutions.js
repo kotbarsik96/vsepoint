@@ -39,10 +39,9 @@ async function doAdapt() {
         toggleMaxHeight();
     }
     // mobile browser
-    else if(isMobileBrowser()) {
+    else if (isMobileBrowser()) {
         const response = await fetch(`sizes/mobile-${ratio}.svg`);
         const layout = await response.text();
-        console.log(ratio);
         currentRatio = ratio;
         doLayout(layout);
         document.body.style.removeProperty("background");
@@ -57,6 +56,7 @@ async function doAdapt() {
         document.body.style.removeProperty("background");
         toggleMaxHeight();
     }
+    console.log(currentRatio);
 
     function doLayout(layout) {
         wrapperSvg.innerHTML = "";
@@ -65,11 +65,13 @@ async function doAdapt() {
         adaptBackground();
     }
     function toggleMaxHeight() {
+        const svg = document.querySelector(".wrapper__svg>svg");
+
         if (isMobileBrowser()) {
             const headerHeight = document.querySelector(".header").offsetHeight;
-            document.querySelector(".wrapper__svg > svg").style.maxHeight = `calc(100vh - ${headerHeight}px - 55px)`;
+            svg.style.maxHeight = `calc(100vh - ${headerHeight}px - 55px)`;
         } else {
-            document.querySelector(".wrapper__svg > svg").style.removeProperty("max-height");
+            svg.style.removeProperty("max-height");
         }
     }
 }
@@ -111,6 +113,27 @@ function adaptBackground() {
         svg.style.width = `${width}px`;
 
         img.remove();
+
+        const headerContainers = document.querySelectorAll(".header__container");
+        const wWidth = document.documentElement.clientWidth || window.innerWidth;
+        const wHeight = document.documentElement.clientHeight || window.innerHeight;
+        const mediaMatch = wWidth / wHeight > 1.59 && wWidth / wHeight < 2.3;
+        const leftPoint = getCoords(document.querySelector("#g29090")).left;
+        const rightPoint = getCoords(document.querySelector("#monday-link")).right;
+        const maxHeaderContWidth = rightPoint - leftPoint;
+        console.log(mediaMatch, wWidth / wHeight);
+
+        if (mediaMatch && maxHeaderContWidth > 1500) {
+            headerContainers.forEach(cont => {
+                cont.style.maxWidth = `${maxHeaderContWidth}px`;
+                cont.classList.add("header__container--adapted");
+            });
+        } else {
+            headerContainers.forEach(cont => {
+                cont.style.removeProperty("max-width");
+                cont.classList.remove("header__container--adapted");
+            });
+        }
     };
     img.src = url;
 }
